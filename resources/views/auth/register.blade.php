@@ -28,7 +28,7 @@
             <form action="{{ url('/register') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="First Name" name="name" value="{{ old('name') }} " required/>
+                    <input type="text" class="form-control" placeholder="Firt Name" name="name" value="{{ old('name') }}" required/>
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
@@ -72,7 +72,6 @@
                 </div>
             </form>
 
-            @include('auth.partials.social_login')
 
             <a href="{{ url('/login') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
         </div><!-- /.form-box -->

@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
@@ -14,9 +12,11 @@ class CategoryController extends Controller
     public function create (Request $request){
 
 //       dump($request->createcategory);
+         
 
         Category::insert([
-            'name_category' => $request->createcategory
+            'name_category' => $request->createcategory,
+             'description_category' => $request->descriptioncategory
         ]);
         return view ('categoria');
 

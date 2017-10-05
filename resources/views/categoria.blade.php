@@ -14,13 +14,11 @@
 					<div class="panel-heading"><h2>Gestion de categorias</h2></div>
 
 					<div class="panel-body " >
-						<a data-toggle="modal" data-target="#myModal"><div class="btn btn-success col-md-3 col-md-offset-1"><i class="fa fa-save fa-3x" aria-hidden="true"></i><h3>Crear categorias</h3></div>
+						<a data-toggle="modal" data-target="#myModal"><div class="btn btn-success col-md-4 col-md-offset-1"><i class="fa fa-save fa-3x" aria-hidden="true"></i><h3>Crear categorias</h3></div>
 						</a>
-						<a data-toggle="modal" data-target="#myModal2"><div class="btn btn-primary col-md-3 col-md-offset-1"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h3> Visualizar categorias</h3></div>
+						<a data-toggle="modal" data-target="#myModal2"><div class="btn btn-primary col-md-4 col-md-offset-2"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h3> Visualizar categorias</h3></div>
 						</a>
 
-						<a data-toggle="modal" data-target="#myModal3"><div class="btn btn-danger col-md-3 col-md-offset-1"><i class="fa fa-trash fa-3x" aria-hidden="true"></i><h3>Eliminar categorias</h3></div>
-						</a>
 					</div>
 
 				</div>
@@ -39,14 +37,17 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Crear Nueva Categoria</h4>
 				</div>
-				<form id="category">
-					<input type="text" name="_token" id="_token" value="{{ csrf_token() }}">
+				<form id="category" action="create_category" method="POST">
+					<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 				<div class="modal-body">
-					<input name="createcategory" id="createcategory" type="text" placeholder="Ingrese nombre de categoria" required class="form-control" minlength="3">
+					<label>Nombre </label><input name="createcategory" id="createcategory" type="text" placeholder="Ingrese nombre de categoria" required class="form-control" minlength="3">
+				</div>
+				<div class="modal-body">
+					<label>Descripcion</label><textarea name="descriptioncategory" id="descriptioncategory" class="form-control" placeholder="Ingrese la Descripcion de la categoria"></textarea> 
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-success"  id="create_category" >Guardar</button>
+					<button type="submit" class="btn btn-success"  id="create_category" >Guardar</button>
 				</div>
 				</form>
 			</div>
@@ -65,15 +66,31 @@
 				</div>
 				<form >
 				<div class="modal-body">
-					<ul>
-						<li>
-
-
-						</li><li>
-							categoria2
-						</li>
-
-					</ul>
+					<div class="tab">
+					<table class="table  table-hover">
+    <thead>
+      <tr>
+      	<th>Id</th>
+        <th>Nombre de Categoria</th>
+        <th>Descripcion</th>
+        <th></th> <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($data as $key => $value)
+  		 <tr>
+      <td class="mdl-data-table__cell--non-numeric">{{$value['id_category']}}</td>
+      <td>{{$value['name_category']}}</td>
+      <td>{{$value['description_category']}}</td>
+      <td><button class="btn btn-primary">editar</button></td>
+      <td><button class="btn btn-danger">eliminar</button></td>
+    </tr>
+  	@endforeach
+   
+    </tbody>
+  </table>
+  </div>
+   
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-default" >Close</button>
