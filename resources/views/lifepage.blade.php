@@ -117,12 +117,12 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
             <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body"> <div class="row">
                         <div class="col-md-1"><label  class="" for="nombre">Nombre</label></div>
-                        <div class="col-md-4"><input  class="form-control" type="text" name="nombre" placeholder="ingrese nombre" value="{{ Auth::user()->name }}" disabled></div>
+                        <div class="col-md-4"><input  class="form-control" type="text" name="nombre" placeholder="ingrese nombre" value="{{ strtoupper( Auth::user()->name) }}" disabled></div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-1"><label  class="" for="apellido">apellido</label></div>
-                        <div class="col-md-4"><input  class="form-control" type="text" name="apellido" placeholder="ingrese Apellido" value="{{ Auth::user()->apellido }}" required></div>
+                        <div class="col-md-4"><input  class="form-control" type="text" name="apellido" placeholder="ingrese Apellido" value="{{ strtoupper(Auth::user()->apellido) }}" disabled></div>
                     </div><br>
                     <div class="row">
                         <div class="col-md-1"><label  class="" for="cedula">Cedula</label></div>

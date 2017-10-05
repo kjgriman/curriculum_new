@@ -30,9 +30,9 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <span class="fa fa-user fa-1x"></span>
+                            <span class="fa fa-user fa-2x"></span>
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">{{ Auth::user()->name }}</span>
+
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->

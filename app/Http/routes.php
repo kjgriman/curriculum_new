@@ -25,4 +25,5 @@ Route::get('/category', 'HomeController@showCategory');
 
 Route::get('/lifepage', 'CategoryController@View');
 Route::post('/create_category', 'CategoryController@create');
+Route::post('/create_course', 'CourseController@create');
 

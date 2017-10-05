@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Category;
 use App\User;
+use App\course;
 
 use App\Http\Requests;
 
@@ -18,7 +19,7 @@ class CategoryController extends Controller
             'name_category' => $request->createcategory,
              'description_category' => $request->descriptioncategory
         ]);
-        return view ('categoria');
+        return redirect('category')->with('status', 'Categoria creada exitosamente!');
 
     }
 
