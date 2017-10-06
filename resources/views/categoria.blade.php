@@ -6,10 +6,12 @@
 
 
 @section('main-content')
+
 	@if (session('status'))
 		<div class="alert alert-success" id="showmessage">
-			<h4 align="center">{{ session('status') }}</h4>
+			<h4 align="center">Proceso Exitoso...!</h4>
 		</div>
+		{{ Session::forget('status') }}
 	@endif
 
 	<div class="container spark-screen">
@@ -82,7 +84,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<div class="modal-content">
+			<div class="modal-content"><div id="eliminado1" class="hidden"><h3> Categoria Eliminada Exitosamente.!!!</h3></div>
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Visualizar Categorias</h4>
@@ -100,13 +102,14 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($data as $key => $value)
-  		 <tr>
+      @foreach ($data as $key1 => $value)
+  		 <tr id="content{{$key1}}">
       <td class="mdl-data-table__cell--non-numeric">{{$value['id_category']}}</td>
       <td>{{$value['name_category']}}</td>
       <td>{{$value['description_category']}}</td>
       <td><button class="btn btn-primary">editar</button></td>
-      <td><button class="btn btn-danger">eliminar</button></td>
+     	<td><a onclick="deleteCategory({{$value['id_category'] }},'{{$key1}}')" class="btn btn-danger">eliminar</a>
+			 </td>
     </tr>
   	@endforeach
    
@@ -167,7 +170,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<div class="modal-content">
+			<div class="modal-content"><div id="eliminado2" class="hidden"><h3> Curso Eliminado Exitosamente.!!!</h3></div>
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Visualizar cursos</h4>
@@ -186,13 +189,13 @@
 						</thead>
 						<tbody>
 						@foreach ($getCourses as $key => $getCourse)
-							<tr>
+							<tr id="conten{{$key}}" class="">
 								<td class="mdl-data-table__cell--non-numeric">{{ $key +1 }}</td>
 								<td>{{ $getCourse->name_courses}}</td>
 								<td>{{ $getCourse->name_category }}</td>
 								<td>{{ $getCourse->description_courses }}</td>
 								<td><button class="btn btn-primary">editar</button></td>
-								<td><button class="btn btn-danger">eliminar</button></td>
+								<td><a onclick="deleteCourse({{$getCourse->id_courses }},'{{$key}}')" class="btn btn-danger">eliminar</a></td>
 							</tr>
 						@endforeach
 
@@ -205,7 +208,7 @@
 				</div>
 				</form>
 			</div>
-
+<div id="resultado"></div>
 		</div>
 	</div>
 
@@ -232,7 +235,62 @@
             });
 
         });
+
         $("#showmessage").delay(3000).hide(600);
+
+        function deleteCategory(id_category){
+            console.log(id_category);
+            location.href="deletecategory/"+id_category+"";
+		}
+
+		function deleteCourse(id_course,key){
+//            var parent = $("#conten"+conten+"");
+            console.log(key);
+            console.log(id_course);
+            $.ajax({
+                url:"deletecourse/"+id_course+"",
+
+                data: id_course,
+                beforeSend:function () {
+                    $('#conten'+key1).attr('class','alert alert-danger');
+                },
+                success: function( result ) {
+                   console.log('exitoso');
+                    $('#conten'+key).remove();
+
+                },
+                complete: function(){
+                    $('#eliminado2').attr('class','alert alert-danger');
+                    $("#eliminado2").delay(2000).hide(100);
+                    // Handle the complete event
+                }
+            });
+
+
+		}
+		function deleteCategory(id_category,key1){
+
+            $.ajax({
+                url:"deletecategory/"+id_category+"",
+
+                data: id_category,
+                beforeSend:function () {
+                    $('#content'+key1).attr('class','alert alert-danger');
+                },
+                success: function( result ) {
+                   console.log('exitoso');
+                    $('#content'+key1).remove();
+
+                },
+                complete: function(){
+                    $('#eliminado1').attr('class','alert alert-danger');
+                    $("#eliminado1").delay(2000).hide(100);
+                    // Handle the complete event
+                }
+            });
+
+
+		}
 	</script>
 
 @endsection

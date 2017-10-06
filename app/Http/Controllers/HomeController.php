@@ -11,7 +11,9 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Category;
 use App\course;
+use App\User;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class HomeController
@@ -38,6 +40,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+
+
     public function showCategory()
     {
         $data1= course::all();
