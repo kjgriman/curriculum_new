@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 use App\Http\Requests;
 
+
 class CategoryController extends Controller
 {
     public function __construct()
@@ -15,10 +16,15 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
     //
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create (Request $request){
 
-//       dump($request->createcategory);
          
+<<<<<<< HEAD
 try {
     Category::insert([
         'name_category' => $request->createcategory,
@@ -48,6 +54,15 @@ catch(Exception $e)  {
                 return redirect('category');
             }else {
 
+=======
+        //dd($request);
+
+        Category::insert([
+            'name_category' => $request->createcategory,
+            'description_category' => $request->descriptioncategory
+        ]);
+        return redirect('category')->with('status','Categoria creada exitosamente!');
+>>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
 
                 Session::push('status', 'Categoria Eliminada exitosamente!');
                 return redirect('category');
@@ -57,9 +72,9 @@ catch(Exception $e)  {
     }
 
     public function View (){
-       $data= User::all();
-//        dump($data->all);
+        $data= User::all();
+        //dump($data->all);
 
-return view('lifepage');
+    return view('lifepage');
     }
 }

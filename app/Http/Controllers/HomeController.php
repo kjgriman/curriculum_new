@@ -21,15 +21,16 @@ use Illuminate\Support\Facades\Session;
  */
 class HomeController extends Controller
 {
+ public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
 
     /**
      * Show the application dashboard.
@@ -41,8 +42,23 @@ class HomeController extends Controller
         return view('home');
     }
 
+<<<<<<< HEAD
 
 
+=======
+    public function destroy(Category $id)
+    {
+        
+        try {
+           $id->delete();
+            return redirect()->route('category');
+    
+        } catch (Exception $e) {
+            return "error fatal ".$e->getMessage();
+        }
+       
+    }
+>>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
     public function showCategory()
     {
         $data1= course::all();

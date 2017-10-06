@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Session;
 class CourseController extends Controller
 {
     //
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     public function create (Request $request){
 
@@ -49,6 +54,18 @@ try {
     echo 'ERROR: ',  $e->getMessage(), "\n";
     }
 
+<<<<<<< HEAD
+=======
+        course::insert([
+            'id_category' => $request->category_asoc,
+            'name_courses' => $request->createcourse,
+            'description_courses' => $request->descriptioncourse
+        ]);
+        //return view ('categoria',compact('data','data1'));
+
+
+        return redirect('category') ->with('status' , 'curso creado exitosamente!');
+>>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
 
     }
 }

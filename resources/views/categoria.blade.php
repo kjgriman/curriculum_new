@@ -5,14 +5,21 @@
 @endsection
 
 
+
+
 @section('main-content')
+<<<<<<< HEAD
 
 	@if (session('status'))
+=======
+	@if (Session::has('status'))
+>>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
 		<div class="alert alert-success" id="showmessage">
 			<h4 align="center">Proceso Exitoso...!</h4>
 		</div>
 		{{ Session::forget('status') }}
 	@endif
+	
 
 	<div class="container spark-screen">
 		<div class="row">
@@ -21,9 +28,9 @@
 					<div class="panel-heading"><h2>Gestion de categorias</h2></div>
 
 					<div class="panel-body " >
-						<a data-toggle="modal" data-target="#myModal"><div class="btn btn-success col-md-4 col-md-offset-1"><i class="fa fa-save fa-3x" aria-hidden="true"></i><h3>Crear Categorias</h3></div>
+						<a data-toggle="modal" data-target="#myModal"><div class="btn btn-success col-md-4 col-md-offset-1"><i class="fa fa-save fa-3x" aria-hidden="true"></i><h3>Crear Categorias</h3><small>Create New Category</small></div>
 						</a>
-						<a data-toggle="modal" data-target="#myModal2"><div class="btn btn-primary col-md-4 col-md-offset-2"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h3> Visualizar Categorias</h3></div>
+						<a data-toggle="modal" data-target="#myModal2"><div class="btn btn-primary col-md-4 col-md-offset-2"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h3> Visualizar Categorias</h3><small>View Category</small></div>
 						</a>
 
 					</div>
@@ -39,9 +46,9 @@
 					<div class="panel-heading"><h2>Gestion de cursos</h2></div>
 
 					<div class="panel-body " >
-						<a data-toggle="modal" data-target="#myModal3"><div class="btn btn-success col-md-4 col-md-offset-1"><i class="fa fa-book fa-3x" aria-hidden="true"></i><h3>Crear Cursos</h3></div>
+						<a data-toggle="modal" data-target="#myModal3"><div class="btn btn-success col-md-4 col-md-offset-1"><i class="fa fa-book fa-3x" aria-hidden="true"></i><h3>Crear Cursos</h3><small>Create New Course</small></div>
 						</a>
-						<a data-toggle="modal" data-target="#myModal4"><div class="btn btn-primary col-md-4 col-md-offset-2"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h3> Visualizar Cursos</h3></div>
+						<a data-toggle="modal" data-target="#myModal4"><div class="btn btn-primary col-md-4 col-md-offset-2"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h3> Visualizar Cursos</h3><small>View Course</small></div>
 						</a>
 
 					</div>
@@ -62,7 +69,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Crear Nueva Categoria</h4>
 				</div>
-				<form id="course" action="create_category" method="POST">
+				<form id="category" action="create_category" method="POST">
 					<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 				<div class="modal-body">
 					<label>Nombre  de categoria</label><input name="createcategory" id="createcategory" type="text" placeholder="Ingrese nombre de categoria" required class="form-control" minlength="3">
@@ -90,18 +97,20 @@
 					<h4 class="modal-title">Visualizar Categorias</h4>
 				</div>
 				<form >
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="modal-body">
 					<div class="tab">
 					<table class="table  table-hover">
     <thead>
       <tr>
-      	<th>Id</th>
+      	<th>#</th>
         <th>Nombre de Categoria</th>
         <th>Descripcion de categoria</th>
         <th></th> <th></th>
       </tr>
     </thead>
     <tbody>
+<<<<<<< HEAD
       @foreach ($data as $key1 => $value)
   		 <tr id="content{{$key1}}">
       <td class="mdl-data-table__cell--non-numeric">{{$value['id_category']}}</td>
@@ -110,6 +119,16 @@
       <td><button class="btn btn-primary">editar</button></td>
      	<td><a onclick="deleteCategory({{$value['id_category'] }},'{{$key1}}')" class="btn btn-danger">eliminar</a>
 			 </td>
+=======
+      @foreach ($data as $key => $value)
+  		 <tr>
+      <td class="mdl-data-table__cell--non-numeric">{{ $key +1 }}</td>
+      <td>{{$value['name_category']}}</td>
+      <td>{{$value['description_category']}}</td>
+      <td><button class="btn btn-primary">editar</button></td>
+      <td><button class="btn btn-danger">eliminar</button>
+      </td>
+>>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
     </tr>
   	@endforeach
    
@@ -137,7 +156,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Crear cursos</h4>
 				</div>
-				<form id="category" action="create_course" method="POST">
+				<form id="course" action="create_course" method="POST">
 					<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 					<div class="modal-body">
 						<label>Nombre del curso </label><input name="createcourse" id="createcourse" type="text" placeholder="Ingrese nombre de categoria" required class="form-control" minlength="3">
@@ -148,7 +167,7 @@
 						<select class="form-control" name="category_asoc" id="category_asoc">
 							<option >Seleccione...</option>
 							@foreach ($data as $key => $value)
-								<option value="{{$value['id_category']}}">{{$value['name_category']}}</option>
+								<option value="{{$value['id_category']}}">{{strtoupper($value['name_category'])}}</option>
 							@endforeach
 
 						</select>
@@ -176,11 +195,12 @@
 					<h4 class="modal-title">Visualizar cursos</h4>
 				</div>
 				<form >
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="modal-body">
 					<table class="table  table-hover">
 						<thead>
 						<tr>
-							<th>Id</th>
+							<th>#</th>
 							<th>Nombre de Curso</th>
 							<th>Categoria de Curso</th>
 							<th>Descripcion de curso</th>
@@ -215,24 +235,7 @@
 
 	<script>
 		$("#create_category").on('click',function () {
-            var createcategory = $('#createcategory').val();
-            var token= $('#_token').val();
-            var myArray = [ createcategory, token ];
-			var url = '/create_category';
-            if (createcategory == ''){
-                alert('Debe ingregar algun nombre para la categoria');
-			}
-            $.ajax({
-                type: 'POST',
-                url: url,
-                async: false,
-                data: myArray,
-                dataType: 'json',
-                success: (function () {
-                    console.log('exito');
-
-                })
-            });
+           $.post( "/create_category", $( "#testform" ).serialize() );
 
         });
 
