@@ -19,15 +19,16 @@ use DB;
  */
 class HomeController extends Controller
 {
+ public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
 
     /**
      * Show the application dashboard.
@@ -37,6 +38,19 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function destroy(Category $id)
+    {
+        
+        try {
+           $id->delete();
+            return redirect()->route('category');
+    
+        } catch (Exception $e) {
+            return "error fatal ".$e->getMessage();
+        }
+       
     }
     public function showCategory()
     {

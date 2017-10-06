@@ -11,6 +11,11 @@ use App\Category;
 class CourseController extends Controller
 {
     //
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     public function create (Request $request){
 
@@ -24,8 +29,9 @@ class CourseController extends Controller
             'description_courses' => $request->descriptioncourse
         ]);
         //return view ('categoria',compact('data','data1'));
-        echo "<script>alert('Categoria creada');</script>";
-        return redirect('category')->with('status', 'curso creado exitosamente!');;
+
+
+        return redirect('category') ->with('status' , 'curso creado exitosamente!');
 
     }
 }

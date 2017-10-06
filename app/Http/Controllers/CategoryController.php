@@ -7,26 +7,32 @@ use App\course;
 
 use App\Http\Requests;
 
+
 class CategoryController extends Controller
 {
     //
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create (Request $request){
 
-//       dump($request->createcategory);
          
+        //dd($request);
 
         Category::insert([
             'name_category' => $request->createcategory,
-             'description_category' => $request->descriptioncategory
+            'description_category' => $request->descriptioncategory
         ]);
-        return redirect('category')->with('status', 'Categoria creada exitosamente!');
+        return redirect('category')->with('status','Categoria creada exitosamente!');
 
     }
 
     public function View (){
-       $data= User::all();
-//        dump($data->all);
+        $data= User::all();
+        //dump($data->all);
 
-return view('lifepage');
+    return view('lifepage');
     }
 }

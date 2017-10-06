@@ -12,18 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/admin', 'HomeController@index');
  
-});
-
 Route::get('/category', 'HomeController@showCategory');
+
 
 Route::get('/lifepage', 'CategoryController@View');
 Route::post('/create_category', 'CategoryController@create');
 Route::post('/create_course', 'CourseController@create');
+
+});
 
