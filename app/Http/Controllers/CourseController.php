@@ -40,6 +40,13 @@ try {
 }
     }
 
+    public function editCourse(course $id_category){
+
+        $data= Category::all();
+
+        return view ('edit',compact('data')) ;     
+     }
+
 
     public function destroyCourse( $id_course)
     {
@@ -54,8 +61,6 @@ try {
     echo 'ERROR: ',  $e->getMessage(), "\n";
     }
 
-<<<<<<< HEAD
-=======
         course::insert([
             'id_category' => $request->category_asoc,
             'name_courses' => $request->createcourse,
@@ -65,7 +70,6 @@ try {
 
 
         return redirect('category') ->with('status' , 'curso creado exitosamente!');
->>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
 
     }
 }

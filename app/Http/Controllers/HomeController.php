@@ -37,15 +37,24 @@ class HomeController extends Controller
      *
      * @return Response
      */
+
+ public function edituser(Request $request, $id){
+try {
+        $user = User::findOrFail($iddd);
+        $user->update($request->all());
+        return ['updated' => true];
+    
+} catch (Exception $e) {
+    return ('error ' .$e->getMessage());
+}
+    }
+
+
     public function index()
     {
         return view('home');
     }
 
-<<<<<<< HEAD
-
-
-=======
     public function destroy(Category $id)
     {
         
@@ -58,7 +67,6 @@ class HomeController extends Controller
         }
        
     }
->>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
     public function showCategory()
     {
         $data1= course::all();

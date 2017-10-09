@@ -8,12 +8,8 @@
 
 
 @section('main-content')
-<<<<<<< HEAD
 
-	@if (session('status'))
-=======
 	@if (Session::has('status'))
->>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
 		<div class="alert alert-success" id="showmessage">
 			<h4 align="center">Proceso Exitoso...!</h4>
 		</div>
@@ -75,11 +71,11 @@
 					<label>Nombre  de categoria</label><input name="createcategory" id="createcategory" type="text" placeholder="Ingrese nombre de categoria" required class="form-control" minlength="3">
 				</div>
 				<div class="modal-body">
-					<label>Descripcion de categoria</label><textarea name="descriptioncategory" id="descriptioncategory" class="form-control" placeholder="Ingrese la Descripcion de la categoria"></textarea>
+					<label>Descripcion de categoria</label><textarea name="descriptioncategory" id="descriptioncategory" class="form-control" required minlength="5" placeholder="Ingrese la Descripcion de la categoria"></textarea>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-success"  id="create_category" >Guardar</button>
+					<button class="btn btn-success"  id="create_category" >Guardar</button>
 				</div>
 				</form>
 			</div>
@@ -110,26 +106,15 @@
       </tr>
     </thead>
     <tbody>
-<<<<<<< HEAD
       @foreach ($data as $key1 => $value)
   		 <tr id="content{{$key1}}">
-      <td class="mdl-data-table__cell--non-numeric">{{$value['id_category']}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{ $value['id_category'] }}</td>
       <td>{{$value['name_category']}}</td>
       <td>{{$value['description_category']}}</td>
-      <td><button class="btn btn-primary">editar</button></td>
-     	<td><a onclick="deleteCategory({{$value['id_category'] }},'{{$key1}}')" class="btn btn-danger">eliminar</a>
+      <td><a onclick="deleteCategory({{ $value['id_category'] }},'{{ $key1 }}')" class="btn btn-danger">Eliminar</a>
 			 </td>
-=======
-      @foreach ($data as $key => $value)
-  		 <tr>
-      <td class="mdl-data-table__cell--non-numeric">{{ $key +1 }}</td>
-      <td>{{$value['name_category']}}</td>
-      <td>{{$value['description_category']}}</td>
-      <td><button class="btn btn-primary">editar</button></td>
-      <td><button class="btn btn-danger">eliminar</button>
-      </td>
->>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
-    </tr>
+			</tr>
+  
   	@endforeach
    
     </tbody>
@@ -138,7 +123,7 @@
    
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-default" >Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
 
 				</div>
 				</form>
@@ -165,19 +150,19 @@
 					<div class="modal-body">
 						<label>Categoria</label>
 						<select class="form-control" name="category_asoc" id="category_asoc">
-							<option >Seleccione...</option>
-							@foreach ($data as $key => $value)
-								<option value="{{$value['id_category']}}">{{strtoupper($value['name_category'])}}</option>
-							@endforeach
+							<option value="0">Seleccione...</option>
+								@foreach ($data as $key => $value)
+									<option value="{{$value['id_category']}}">{{strtoupper($value['name_category'])}}</option>
+								@endforeach
 
 						</select>
 					</div>
 					<div class="modal-body">
-						<label>Descripcion del curso</label><textarea name="descriptioncourse" id="descriptioncourse" class="form-control" placeholder="Ingrese la Descripcion de la categoria"></textarea>
+						<label>Descripcion del curso</label><textarea name="descriptioncourse" id="descriptioncourse"   required class="form-control" minlength="5" placeholder="Ingrese la Descripcion de la categoria"></textarea>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-success"  id="create_course" >Guardar</button>
+						<button class="btn btn-success"  id="create_course" >Guardar</button>
 					</div>
 				</form>
 			</div>
@@ -214,8 +199,8 @@
 								<td>{{ $getCourse->name_courses}}</td>
 								<td>{{ $getCourse->name_category }}</td>
 								<td>{{ $getCourse->description_courses }}</td>
-								<td><button class="btn btn-primary">editar</button></td>
-								<td><a onclick="deleteCourse({{$getCourse->id_courses }},'{{$key}}')" class="btn btn-danger">eliminar</a></td>
+								
+								<td><a onclick="deleteCourse({{ $getCourse->id_courses }},'{{$key}}')" class="btn btn-danger">Eliminar</a></td>
 							</tr>
 						@endforeach
 
@@ -233,18 +218,50 @@
 	</div>
 
 
-	<script>
-		$("#create_category").on('click',function () {
-           $.post( "/create_category", $( "#testform" ).serialize() );
+    
 
+
+	<script>
+
+		$("#create_category").on('click',function () {
+			var txtarcategory = $('#descriptioncategory').val();
+			var txtcategory = $('#createcategory').val();
+			if (txtarcategory==null || txtarcategory=='' || txtarcategory==' ') {
+				alert('debe introducir una descripcion para la categoria');
+			}
+			if (txtcategory==null || txtcategory=='' || txtcategory==' ') {
+				alert('debe introducir un Nombre para la categoria');
+			}
+				else{
+				$('#create_course').attr('type','submit');
+			}
+         
         });
 
-        $("#showmessage").delay(3000).hide(600);
+        $("#create_course").on('click',function () {
+			var txtcourse = $('#createcourse').val();
+			var sltcategory = $('#category_asoc').val();
+			var txtdesccourse = $('#descriptioncourse').val();
+			console.log(sltcategory);
+		
+			if (txtcourse==null || txtcourse=='' || txtcourse==' ') {
+				alert('debe introducir un nombre para el curso');
+			}
+			if (sltcategory==0) {
+				alert('debe seleccionar una categoria para el curso');
+			}
+			if (txtdesccourse==null || txtdesccourse=='' || txtdesccourse==' ') {
+				alert('debe introducir una descripcion para el curso');
+			}
+			else{
+				$('#create_course').attr('type','submit');
+			}
+         
+        });
 
-        function deleteCategory(id_category){
-            console.log(id_category);
-            location.href="deletecategory/"+id_category+"";
-		}
+        $("#showmessage").delay(3000).hide(400);
+
+      
 
 		function deleteCourse(id_course,key){
 //            var parent = $("#conten"+conten+"");
@@ -255,22 +272,24 @@
 
                 data: id_course,
                 beforeSend:function () {
-                    $('#conten'+key1).attr('class','alert alert-danger');
+                    $('#conten'+key).attr('class','alert alert-danger');
                 },
                 success: function( result ) {
                    console.log('exitoso');
                     $('#conten'+key).remove();
+                     $('#eliminado2').attr('class','alert alert-danger');
+                    $("#eliminado2").delay(2000).hide(100);
+                    
 
                 },
                 complete: function(){
-                    $('#eliminado2').attr('class','alert alert-danger');
-                    $("#eliminado2").delay(2000).hide(100);
-                    // Handle the complete event
+                   // Handle the complete event
                 }
             });
 
 
 		}
+
 		function deleteCategory(id_category,key1){
 
             $.ajax({
@@ -282,12 +301,24 @@
                 },
                 success: function( result ) {
                    console.log('exitoso');
+
                     $('#content'+key1).remove();
+
+                    $('#eliminado1').attr('class','alert alert-success');
+                    $("#eliminado1").delay(2000).hide(100);
+
+                      $('#category_asoc').find('option[value="'+id_category+'"]').remove();
 
                 },
                 complete: function(){
-                    $('#eliminado1').attr('class','alert alert-danger');
+
+                    // Handle the complete event
+                },
+                error: function(xhr,statusText){
+                    $('#eliminado1').html('<h3>'+statusText+'<h3>').attr('class','alert alert-danger');
                     $("#eliminado1").delay(2000).hide(100);
+                  console.log(xhr.overrideMimeType( "text/plain; charset=x-user-defined" ));
+                  console.log(statusText);
                     // Handle the complete event
                 }
             });

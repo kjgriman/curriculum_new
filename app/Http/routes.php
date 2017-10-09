@@ -14,28 +14,18 @@
 Route::get('/', function () {
     return view('home');
 });
-
+ Route::auth();
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+   
     Route::get('/admin', 'HomeController@index');
  
-<<<<<<< HEAD
-
-
-=======
->>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
 Route::get('/category', 'HomeController@showCategory');
 Route::get('/deletecategory/{id_category}', 'CategoryController@destroyCategory');
-Route::get('/deletecourse/{id_course}', 'CourseController@destroyCourse');
+Route::get('/deletecourse/{id_course}', 'CourseConroller@destroyCourse');
+Route::post('/edituser/{id_user}', 'HomeController@edituser');
 
 
 Route::get('/lifepage', 'CategoryController@View');
 Route::post('/create_category', 'CategoryController@create');
 Route::post('/create_course', 'CourseController@create');
-<<<<<<< HEAD
 });
-=======
-
-});
-
->>>>>>> bc94bb1234052093ebd30030f8debee196242cd8

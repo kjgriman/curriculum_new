@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'mailgun'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'army_men_4@hotmail.com', 'name' => 'kerbin griman'],
 
     /*
     |--------------------------------------------------------------------------
@@ -108,5 +108,7 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+
+     'pretend' => false,
 
 ];

@@ -14,6 +14,8 @@ use Illuminate\Mail\Transport\MailgunTransport;
 use Illuminate\Mail\Transport\MandrillTransport;
 use Illuminate\Mail\Transport\SparkPostTransport;
 use Swift_SendmailTransport as SendmailTransport;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 
 class TransportManager extends Manager
 {

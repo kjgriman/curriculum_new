@@ -15,16 +15,11 @@ class CategoryController extends Controller
     {
         $this->middleware('auth');
     }
-    //
-     public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
 
     public function create (Request $request){
 
          
-<<<<<<< HEAD
 try {
     Category::insert([
         'name_category' => $request->createcategory,
@@ -54,7 +49,6 @@ catch(Exception $e)  {
                 return redirect('category');
             }else {
 
-=======
         //dd($request);
 
         Category::insert([
@@ -62,8 +56,6 @@ catch(Exception $e)  {
             'description_category' => $request->descriptioncategory
         ]);
         return redirect('category')->with('status','Categoria creada exitosamente!');
->>>>>>> bc94bb1234052093ebd30030f8debee196242cd8
-
                 Session::push('status', 'Categoria Eliminada exitosamente!');
                 return redirect('category');
             }}catch(Exception $e)  {
