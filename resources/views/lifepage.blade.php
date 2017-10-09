@@ -124,16 +124,16 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="panel-body"> <div class="row">
                         <div class="col-md-1"><label  class="" for="nombre">Nombre</label></div>
-                        <div class="col-md-4"><input id="nombre"  class="form-control" type="text" name="nombre" placeholder="ingrese nombre" value="{{ strtoupper( Auth::user()->name) }}" disabled required></div>
+                        <div class="col-md-4"><input id="nombre"  class="form-control" type="text" name="nombre" placeholder="ingrese nombre" value="{{ strtoupper( Auth::user()->name) }}"  required></div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-1"><label  class="" for="apellido">Apellido</label></div>
-                        <div class="col-md-4"><input id="apellido"  class="form-control" type="text" name="apellido" placeholder="ingrese Apellido" value="{{ strtoupper(Auth::user()->apellido) }}" disabled required></div>
+                        <div class="col-md-4"><input id="apellido"  class="form-control" type="text" name="apellido" placeholder="ingrese Apellido" value="{{ strtoupper(Auth::user()->apellido) }}"  required></div>
                     </div><br>
                     <div class="row">
                         <div class="col-md-1"><label  class="" for="cedula">Cedula</label></div>
-                        <div class="col-md-4"><input id="cedula"  class="form-control" type="number" name="cedula" placeholder="ingrese Cedula" required></div>
+                        <div class="col-md-4"><input id="cedula"  class="form-control" type="number" name="cedula"  value="{{ strtoupper( Auth::user()->cedula) }}" placeholder="ingrese Cedula" required></div>
                     </div>
                     <br>
                     <div class="row">
@@ -143,14 +143,14 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
                     <br>
                     <div class="row">
                         <div class="col-md-1"><label  class="" for="direccion">Direccion</label></div>
-                        <div class="col-md-4"><input id="direccion"  class="form-control" type="text" name="direccion" placeholder="ingrese Direccion" required></div>
+                        <div class="col-md-4"><input id="direccion"  class="form-control" type="text" name="direccion" value="{{ strtoupper( Auth::user()->direccion) }}" placeholder="ingrese Direccion" required></div>
                     </div>
                     <br>
                 <div class="row">
                         <div class="col-md-1"><label  class="" for="direccion">Telefono</label></div>
-                        <div class="col-md-4"><input id="telefono"  class="form-control" type="text" name="telefono" placeholder="ingrese Telefono" value="{{ Auth::user()->telefono }}" disabled required></div>
+                        <div class="col-md-4"><input id="telefono"  class="form-control" type="text" name="telefono" placeholder="ingrese Telefono" value="{{ Auth::user()->telefono }}"  required></div>
                     </div>
-                <div class="col-md-offset-5"><button class="btn btn-primary center" id="guardardatos"> Guardar y Continuar</button></div></div>
+                <div class="col-md-offset-5"><button class="btn btn-primary center" id="guardardatos"> Guardar y Continuar</button>&nbsp;&nbsp;<a class="btn btn-default center" id="seguirdatos">Continuar sin guardar</a></div></div>
 </form>
 
         </div>
@@ -172,7 +172,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
 
                 </div>
 
-                <div class=""> Desea agregar una nueva experiencia laboral?  <button id="jobs_plus" class="btn btn-success fa fa-plus fa-2x" aria-hidden="true"></button></div>
+                <div class=""> Desea agregar una nueva experiencia laboral?  <button id="jobs_plus" class="btn btn-success fa fa-plus fa-2x" aria-hidden="true"></button> &nbsp;<a class="btn btn-default center" id="seguirtrabajo">Continuar sin guardar</a></div>
         </div>
       </div>
     </div>
@@ -242,6 +242,17 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
 
                 });
 
+       $('#seguirdatos').on("click",function () {
+           $('#collapse1').collapse();
+           $('#collapse2').collapse();
+
+       });
+       $('#seguirtrabajo').on("click",function () {
+           $('#collapse2').hide();
+           $('#collapse3').collapse();
+
+       });
+
 
        $('#guardardatos').on("click",function(){
         var nombre= $('#nombre').val();
@@ -278,6 +289,12 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
         }
 
        });
+
+       $('#checkbox_jobs_0').on('change',function () {
+         $('#fecha_salida_0').attr('disabled','disabled');
+         $('#fecha_salida_0').val('');
+       });
+
 $('#experiencia_laboral').on("click",function () {
      var nombre= $('#nombre').val();
         var apellido= $('#apellido').val();
@@ -306,9 +323,9 @@ $('#experiencia_laboral').on("click",function () {
             alert('Por favor ingrese su telefono');
         }
         else{
-            alert('Registro guardado con exito');
 
-           
+            $('#collapse1').collapse();
+            $('#collapse2').collapse();
         }
     // body...
 })

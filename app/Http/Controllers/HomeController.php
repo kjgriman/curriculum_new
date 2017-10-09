@@ -40,7 +40,7 @@ class HomeController extends Controller
 
  public function edituser(Request $request, $id){
 try {
-        $user = User::findOrFail($iddd);
+        $user = User::findOrFail($id);
         $user->update($request->all());
         return ['updated' => true];
     
