@@ -247,10 +247,10 @@
 			if (txtcourse==null || txtcourse=='' || txtcourse==' ') {
 				alert('debe introducir un nombre para el curso');
 			}
-			if (sltcategory==0) {
+			else if (sltcategory==0) {
 				alert('debe seleccionar una categoria para el curso');
 			}
-			if (txtdesccourse==null || txtdesccourse=='' || txtdesccourse==' ') {
+			else if (txtdesccourse==null || txtdesccourse=='' || txtdesccourse==' ') {
 				alert('debe introducir una descripcion para el curso');
 			}
 			else{

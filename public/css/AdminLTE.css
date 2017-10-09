@@ -10,6 +10,18 @@
  * Core: General Layout Style
  * -------------------------
  */
+ input:valid, textarea:valid {
+
+border:3px solid green;
+margin-right:10px;
+}
+
+input:invalid, textarea:invalid, select:invalid {
+
+border:3px solid red;
+margin-right:10px;
+ 
+}
 
  input[type=number]::-webkit-outer-spin-button,
 
