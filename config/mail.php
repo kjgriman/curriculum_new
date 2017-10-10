@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'mailgun'),
+    'driver' => env('MAIL_DRIVER','sparkpost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST','smtp.sparkpostmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'army_men_4@hotmail.com', 'name' => 'kerbin griman'],
+    'from' => ['address' => 'kjgriman@tactica9mmshot.com', 'name' => 'kerbin griman'],
 
     /*
     |--------------------------------------------------------------------------
