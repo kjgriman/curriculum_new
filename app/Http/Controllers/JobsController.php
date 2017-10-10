@@ -40,6 +40,37 @@ class JobsController extends Controller
     {
         //
         dump($request->all());
+        $data =$request->except(['_token']);
+        foreach ($data as $key => $value){
+           
+
+            foreach ($value as $item => $value1) {
+                dump($item);
+                dump($value1);
+
+                job::insert([
+//
+                    'name_company' => $value1,
+                    'cargo' =>  $value1,
+                    'date_in' =>  $value1,
+                    'date_out' =>  $value1,
+                    'ubication_company' =>  $value1,
+                    'observation' =>  $value1,
+                    'actuality'=> true
+                ]);
+
+
+            }
+
+
+
+
+
+    }
+
+//        job::insert([
+//            'name_category' => $request->createcategory,
+//            'description_category' => $request->descriptioncategory]);
 
     }
 

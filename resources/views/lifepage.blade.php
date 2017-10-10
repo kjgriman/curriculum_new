@@ -6,35 +6,35 @@
 <?php
 $jobs ='<div class="panel-body"><div class="panel-body"> <div class="row">
                             <div class="col-md-2"><label  class="" for="nombre_empresa_0">Nombre de empresa</label></div>
-                            <div class="col-md-4"><input  class="form-control" type="text" name="nombre_empresa_0"  id="nombre_empresa_0" placeholder="ingrese nombre" required></div>
+                            <div class="col-md-4"><input  class="form-control" type="text" name="nombre_empresa[]"  id="nombre_empresa_0" placeholder="ingrese nombre" required></div>
                         </div>
                         <br>
                         <div class="row ">
                             <div class="col-md-2"><label  class="" for="cargo_0">Cargo</label></div>
-                            <div class="col-md-4"><input  class="form-control" type="text" name="cargo_0" id="cargo_0" placeholder="ingrese Apellido" required></div>
+                            <div class="col-md-4"><input  class="form-control" type="text" name="cargo[]" id="cargo_0" placeholder="ingrese Apellido" required></div>
                         </div><br>
                         <div class="row">
                             <div class="col-md-2"><label  class="" for="fecha_entrada_0">fecha entrada</label></div>
-                            <div class="col-md-4"><input  class="form-control" type="date" name="fecha_entrada_0" id="fecha_entrada_0" placeholder="ingrese Cedula" required></div>
+                            <div class="col-md-4"><input  class="form-control" type="date" name="fecha_entrada[]" id="fecha_entrada_0" placeholder="ingrese Cedula" required></div>
                         </div>
                         <br>
                         <div class="row">
                         <div class="col-md-2"><label  class="" for="checkbox_jobs_0">Trabajas aqui Actualmente?</label></div>
-                            <div class="col-md-4"><input type="checkbox" value="1" id="checkbox_jobs_0"></div>
+                            <div class="col-md-4"><input type="checkbox" value="1" id="checkbox_jobs_0" name="checkbox_jobs[]"></div>
                          </div>
                         <div class="row">
                             <div class="col-md-2"><label  class="" for="email">fecha salida</label></div>
-                            <div class="col-md-4"><input id="fecha_salida_0" class="form-control" type="date" name="fecha_Salida_0" placeholder="ingrese Email" ></div>
+                            <div class="col-md-4"><input id="fecha_salida_0" class="form-control" type="date" name="fecha_Salida[]" placeholder="ingrese Email" ></div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-2"><label  class="" for="direccion">Direccion de empresa</label></div>
-                            <div class="col-md-4"><input  class="form-control" type="text" name="direccion_empresa_0" id="direccion_empresa_0" placeholder="ingrese Direccion" required></div>
+                            <div class="col-md-4"><input  class="form-control" type="text" name="direccion_empresa[]" id="direccion_empresa[]" placeholder="ingrese Direccion" required></div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-2"><label  class="" for="direccion">Observaciones</label></div>
-                            <div class="col-md-4"><input  id="observaciones_0" class="form-control" type="text" name="observaciones_0" id="observaciones_0" placeholder="ingrese alguna observacion" required></div>
+                            <div class="col-md-4"><input  id="observaciones[]" class="form-control" type="text" name="observaciones[]" id="observaciones_0" placeholder="ingrese alguna observacion" required></div>
                         </div>
                         <br>
 
@@ -45,37 +45,37 @@ $jobs ='<div class="panel-body"><div class="panel-body"> <div class="row">
 
 $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
                             <div class="col-md-2"><label  class="" for="nombre">Nombre de institucion</label></div>
-                            <div class="col-md-4"><input  class="form-control" type="text" name="nombre_institucion" placeholder="ingrese nombre de la institucion" required></div>
+                            <div class="col-md-4"><input  class="form-control" type="text" name="nombre_institucion[]" placeholder="ingrese nombre de la institucion" required></div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-2"><label  class="" for="apellido">Carrera/Especialidad/Area</label></div>
-                            <div class="col-md-4"><input  class="form-control" type="text" name="carrera" placeholder="ingrese Carrera/Especialidad/Area<" required></div>
+                            <div class="col-md-4"><input  class="form-control" type="text" name="carrera[]" placeholder="ingrese Carrera/Especialidad/Area<" required></div>
                         </div><br>
                         <div class="row">
                             <div class="col-md-2"><label  class="" for="cedula">fecha entrada</label></div>
-                            <div class="col-md-4"><input  class="form-control" type="date" name="fecha_entrada" placeholder="fecha de ingreso" required></div>
+                            <div class="col-md-4"><input  class="form-control" type="date" name="fecha_entrada[]" placeholder="fecha de ingreso" required></div>
                         </div>
                         <br>
                         <div class="row">
                         <div class="col-md-2"><label  class="" for="direccion">Estudia aqui Actualmente?</label></div>
-                            <div class="col-md-4"><input type="checkbox" value="1" id="checkbox_studies"></div>
+                            <div class="col-md-4"><input type="checkbox" value="1" id="checkbox_studies" name="checkbox_studies[]" ></div>
                          </div>
                          <div class="row " id="estudies">
                             <div class="col-md-2"><label  class="" for="email">fecha salida</label></div>
-                            <div class="col-md-4"><input id="fecha_salida_estudies" class="form-control" type="date" name="fecha_Salida" placeholder="ingrese fecha de egreso" ></div>
+                            <div class="col-md-4"><input id="fecha_salida_estudies" class="form-control" type="date" name="fecha_Salida[]" placeholder="ingrese fecha de egreso" ></div>
 </div>
 
 
                         <br>
                         <div class="row">
                             <div class="col-md-2"><label  class="" for="direccion">Direccion de empresa</label></div>
-                            <div class="col-md-4"><input  class="form-control" type="text" name="direccion_empresa" placeholder="ingrese Direccion" required></div>
+                            <div class="col-md-4"><input  class="form-control" type="text" name="direccion_empresa[]" placeholder="ingrese Direccion" required></div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-2"><label  class="" for="direccion">Titulo Obtenido</label></div>
-                            <div class="col-md-4"><input  class="form-control" type="text" name="observaciones" placeholder="ingrese titulo obtenido" required></div>
+                            <div class="col-md-4"><input  class="form-control" type="text" name="observaciones[]" placeholder="ingrese titulo obtenido" required></div>
                         </div>
                         <br>
                         <div class="row">
@@ -108,6 +108,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
         <hr>
 
         <br>
+    <div id="mensaje" class="hidden"></div>
   
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">
@@ -147,7 +148,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
                     <br>
                 <div class="row">
                         <div class="col-md-1"><label  class="" for="direccion">Telefono</label></div>
-                        <div class="col-md-4"><input id="telefono"  class="form-control" type="text" name="telefono" placeholder="ingrese Telefono" value="{{ Auth::user()->telefono }}"  required></div>
+                        <div class="col-md-4"><input id="telefono"  class="form-control" type="number" name="telefono" placeholder="ingrese Telefono" value="{{ Auth::user()->telefono }}"  required></div>
                     </div>
                 <div class="col-md-offset-5"><a class="btn btn-primary center" onclick="edituser({{Auth::user()->id}})" id="guardardatos"> Guardar y Continuar</a>&nbsp;&nbsp;<a class="btn btn-default center" id="seguirdatos">Continuar sin guardar</a></div></div>
 </form>
@@ -158,7 +159,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" id="experiencia_laboral" data-parent="#accordion" href="">Experiencia laboral</a>
+          <a data-toggle="collapse" id="experiencia_laboral" data-parent="#accordion" href="#collapse2">Experiencia laboral</a>
         </h4>
       </div>
       <div id="collapse2" class="panel-collapse collapse">
@@ -182,7 +183,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="">Estudios Realizados</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Estudios Realizados</a>
         </h4>
       </div>
       <div id="collapse3" class="panel-collapse collapse">
@@ -230,7 +231,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
 
        $("#estudies_plus").on('click',function(){
 
-        $(".estudies_new").append('<kbd>Estudio adicional '+bt_count+'</kbd><div class="panel-body"><div class="panel-body"> <div class="row"><div class="col-md-2"><label  class="" for="nombre_institucion">Nombre de institucion</label></div><div class="col-md-4"><input  class="form-control" type="text" name="nombre_institucion_'+bt_count+'" placeholder="ingrese nombre de la institucion" required></div></div><br><div class="row "><div class="col-md-2"><label  class="" for="carrera">Carrera/Especialidad/Area</label></div><div class="col-md-4"><input  class="form-control" type="text" name="carrera_'+bt_count+'" placeholder="ingrese carrera/especialidad/area de estudio" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="fecha_ingreso_estudies">fecha de Ingreso</label></div><div class="col-md-4"><input  class="form-control" type="date" name="fecha_ingreso_estudies'+bt_count+'" id="fecha_ingreso_estudies'+bt_count+'" placeholder="ingrese Fecha de ingreso" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="">Estudias aqui Actualmente?</label></div><div class="col-md-4"><input type="checkbox" value="1" id="checkbox_estudies_'+bt_count+'"></div></div><div class="row"><div class="col-md-2"><label  class="" for="Fecha_egreso_institucion">fecha de egreso de la institucion</label></div><div class="col-md-4"><input id="Fecha_egreso_institucion_'+bt_count+'" class="form-control" type="date" name="Fecha_egreso_institucion'+bt_count+'" placeholder="ingrese Email" ></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Direccion de empresa</label></div><div class="col-md-4"><input  class="form-control" type="text" id="direccion_institucion_'+bt_count+'" name="direccion_institucion_'+bt_count+'" placeholder="ingrese Direccion" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Observaciones</label></div> <div class="col-md-4"><input  class="form-control" type="text" name="observaciones_'+bt_count+'" id="observaciones_'+bt_count+'" placeholder="ingrese alguna observacion" required></div></div><br></div><div class="col-md-offset-5"><button class="btn btn-primary center" id="guardarestudies"> Guardar </button></div></div>');
+        $(".estudies_new").append('<kbd>Estudio adicional '+bt_count+'</kbd><div class="panel-body"><div class="panel-body"> <div class="row"><div class="col-md-2"><label  class="" for="nombre_institucion">Nombre de institucion</label></div><div class="col-md-4"><input  class="form-control" type="text" name="nombre_institucion[]" placeholder="ingrese nombre de la institucion" required></div></div><br><div class="row "><div class="col-md-2"><label  class="" for="carrera">Carrera/Especialidad/Area</label></div><div class="col-md-4"><input  class="form-control" type="text" name="carrera[]" placeholder="ingrese carrera/especialidad/area de estudio" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="fecha_ingreso_estudies">fecha de Ingreso</label></div><div class="col-md-4"><input  class="form-control" type="date" name="fecha_ingreso_estudies[]" id="fecha_ingreso_estudies'+bt_count+'" placeholder="ingrese Fecha de ingreso" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="">Estudias aqui Actualmente?</label></div><div class="col-md-4"><input type="checkbox" value="1" id="checkbox_estudies_'+bt_count+'"></div></div><div class="row"><div class="col-md-2"><label  class="" for="Fecha_egreso_institucion">fecha de egreso de la institucion</label></div><div class="col-md-4"><input id="Fecha_egreso_institucion_'+bt_count+'" class="form-control" type="date" name="Fecha_egreso_institucion[]" placeholder="ingrese Email" ></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Direccion de empresa</label></div><div class="col-md-4"><input  class="form-control" type="text" id="direccion_institucion_'+bt_count+'" name="direccion_institucion[]" placeholder="ingrese Direccion" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Observaciones</label></div> <div class="col-md-4"><input  class="form-control" type="text" name="observaciones[]" id="observaciones_'+bt_count+'" placeholder="ingrese alguna observacion" required></div></div><br></div><div class="col-md-offset-5"><button class="btn btn-primary center" id="guardarestudies"> Guardar </button></div></div>');
         bt_count ++;
         console.log(bt_count);
 
@@ -238,7 +239,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
        });
 
        $("#jobs_plus").on("click", function(){
-           $(".jobs_new").append('<kbd>trabajo adicional '+bt_count2+'</kbd><div class="panel-body"><div class="panel-body"> <div class="row"><div class="col-md-2"><label  class="" for="nombre">Nombre de empresa</label></div><div class="col-md-4"><input  class="form-control" type="text" name="nombre_empresa_'+bt_count2+'"  id="nombre_empresa_'+bt_count2+'" placeholder="ingrese nombre" required></div></div><br><div class="row "><div class="col-md-2"><label  class="" for="apellido">Cargo</label></div><div class="col-md-4"><input  class="form-control" type="text" name="cargo_'+bt_count2+'"  id="cargo_'+bt_count2+'" placeholder="ingrese Apellido" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="cedula">fecha entrada</label></div><div class="col-md-4"><input  class="form-control" type="date" name="fecha_entrada_'+bt_count2+'  id="fecha_entrada_'+bt_count2+'" placeholder="ingrese Cedula" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Trabajas aqui Actualmente?</label></div><div class="col-md-4"><input type="checkbox" value="1" id="checkbox_jobs_'+bt_count2+'"></div></div><div class="row"><div class="col-md-2"><label  class="" for="email">fecha salida</label></div><div class="col-md-4"><input id="fecha_salida_jobs'+bt_count2+'" class="form-control" type="date" name="fecha_Salida_'+bt_count2+'" placeholder="" ></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Direccion de empresa</label></div><div class="col-md-4"><input  class="form-control" type="text" name="direccion_empresa_'+bt_count2+'" id="direccion_empresa_'+bt_count2+'" placeholder="ingrese Direccion" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Observaciones</label></div> <div class="col-md-4"><input  class="form-control" type="text" name="observaciones_'+bt_count2+'" id="observaciones_'+bt_count2+'" placeholder="ingrese alguna observacion" required></div></div><br></div></div>'); 
+           $(".jobs_new").append('<kbd>trabajo adicional '+bt_count2+'</kbd><div class="panel-body"><div class="panel-body"> <div class="row"><div class="col-md-2"><label  class="" for="nombre">Nombre de empresa</label></div><div class="col-md-4"><input  class="form-control" type="text" name="nombre_empresa[]"  id="nombre_empresa_'+bt_count2+'" placeholder="ingrese nombre" required></div></div><br><div class="row "><div class="col-md-2"><label  class="" for="apellido">Cargo</label></div><div class="col-md-4"><input  class="form-control" type="text" name="cargo[]"  id="cargo_'+bt_count2+'" placeholder="ingrese Apellido" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="cedula">fecha entrada</label></div><div class="col-md-4"><input  class="form-control" type="date" name="fecha_entrada[]"  id="fecha_entrada_'+bt_count2+'" placeholder="ingrese Cedula" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Trabajas aqui Actualmente?</label></div><div class="col-md-4"><input type="checkbox" value="1" id="checkbox_jobs_'+bt_count2+'"></div></div><div class="row"><div class="col-md-2"><label  class="" for="email">fecha salida</label></div><div class="col-md-4"><input id="fecha_salida_jobs'+bt_count2+'" class="form-control" type="date" name="fecha_Salida[]" placeholder="" ></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Direccion de empresa</label></div><div class="col-md-4"><input  class="form-control" type="text" name="direccion_empresa[]" id="direccion_empresa_'+bt_count2+'" placeholder="ingrese Direccion" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Observaciones</label></div> <div class="col-md-4"><input  class="form-control" type="text" name="observaciones[]" id="observaciones_'+bt_count2+'" placeholder="ingrese alguna observacion" required></div></div><br></div></div>');
 
         bt_count2 ++;
         console.log(bt_count);
@@ -292,8 +293,11 @@ function edituser(id_user){
 
                 data: data,
                 
-                success: function( result ) {
+                success: function( result, statusText ) {
                    console.log('exitoso');
+                    $('#mensaje').append('<h3>'+statusText+' los datos se guardaron exitosamente<h3>').attr('class','alert alert-success');
+                    $("#mensaje").delay(2000).hide(100);
+//                    $("#mensaje").attr('class','hidden');
 
             $('#collapse1').collapse();
             $('#collapse2').collapse();
@@ -307,6 +311,8 @@ function edituser(id_user){
                 error: function(xhr,statusText){
                    console.log(xhr.overrideMimeType( "text/plain; charset=x-user-defined" ));
                   console.log(statusText);
+                    $('#mensaje').append('<h3>'+statusText+' <h3>').attr('class','alert alert-danger');
+                    $("#mensaje").delay(2000).hide(100);
                     // Handle the complete event
                 }
             });
