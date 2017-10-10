@@ -40,7 +40,6 @@ $jobs ='<div class="panel-body"><div class="panel-body"> <div class="row">
 
 
                         </div>
-                        <div class="col-md-offset-5"><button class="btn btn-primary center"> Guardar y Continuar</button></div>
 
                         </div>';
 
@@ -119,7 +118,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
       </div>
       <div id="collapse1" class="panel-collapse collapse in">
         <div class="panel-body">
-            <form action="edituser/{{Auth::user()->id}}" method="post" >
+            <form id="formdata"  >
                 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="panel-body"> <div class="row">
@@ -150,7 +149,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
                         <div class="col-md-1"><label  class="" for="direccion">Telefono</label></div>
                         <div class="col-md-4"><input id="telefono"  class="form-control" type="text" name="telefono" placeholder="ingrese Telefono" value="{{ Auth::user()->telefono }}"  required></div>
                     </div>
-                <div class="col-md-offset-5"><button class="btn btn-primary center" id="guardardatos"> Guardar y Continuar</button>&nbsp;&nbsp;<a class="btn btn-default center" id="seguirdatos">Continuar sin guardar</a></div></div>
+                <div class="col-md-offset-5"><a class="btn btn-primary center" onclick="edituser({{Auth::user()->id}})" id="guardardatos"> Guardar y Continuar</a>&nbsp;&nbsp;<a class="btn btn-default center" id="seguirdatos">Continuar sin guardar</a></div></div>
 </form>
 
         </div>
@@ -165,14 +164,18 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
       <div id="collapse2" class="panel-collapse collapse">
         <div class="panel-body">
             
+        <form action="create_jobs" method="POST">  
 
+                    <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                 <?php echo $jobs;?>
                 <div class="jobs_new">
                     {{--nuevos trabajos--}}
 
                 </div>
 
-                <div class=""> Desea agregar una nueva experiencia laboral?  <button id="jobs_plus" class="btn btn-success fa fa-plus fa-2x" aria-hidden="true"></button> &nbsp;<a class="btn btn-default center" id="seguirtrabajo">Continuar sin guardar</a></div>
+                <div class=""> Desea agregar una nueva experiencia laboral?  <button id="jobs_plus" class="btn btn-success fa fa-plus fa-2x" aria-hidden="true"></button> &nbsp;<a class="btn btn-default center" id="seguirtrabajo">Continuar sin guardar</a>&nbsp;
+                        <button class="btn btn-primary center"> Guardar y Continuar</button></div>
+       </form>
         </div>
       </div>
     </div>
@@ -235,7 +238,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
        });
 
        $("#jobs_plus").on("click", function(){
-           $(".jobs_new").append('<kbd>trabajo adicional '+bt_count2+'</kbd><div class="panel-body"><div class="panel-body"> <div class="row"><div class="col-md-2"><label  class="" for="nombre">Nombre de empresa</label></div><div class="col-md-4"><input  class="form-control" type="text" name="nombre_empresa_'+bt_count2+'"  id="nombre_empresa_'+bt_count2+'" placeholder="ingrese nombre" required></div></div><br><div class="row "><div class="col-md-2"><label  class="" for="apellido">Cargo</label></div><div class="col-md-4"><input  class="form-control" type="text" name="cargo_'+bt_count2+'"  id="cargo_'+bt_count2+'" placeholder="ingrese Apellido" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="cedula">fecha entrada</label></div><div class="col-md-4"><input  class="form-control" type="date" name="fecha_entrada_'+bt_count2+'  id="fecha_entrada_'+bt_count2+'" placeholder="ingrese Cedula" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Trabajas aqui Actualmente?</label></div><div class="col-md-4"><input type="checkbox" value="1" id="checkbox_jobs_'+bt_count2+'"></div></div><div class="row"><div class="col-md-2"><label  class="" for="email">fecha salida</label></div><div class="col-md-4"><input id="fecha_salida_jobs'+bt_count2+'" class="form-control" type="date" name="fecha_Salida_'+bt_count2+'" placeholder="" ></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Direccion de empresa</label></div><div class="col-md-4"><input  class="form-control" type="text" name="direccion_empresa_'+bt_count2+'" id="direccion_empresa_'+bt_count2+'" placeholder="ingrese Direccion" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Observaciones</label></div> <div class="col-md-4"><input  class="form-control" type="text" name="observaciones_'+bt_count2+'" id="observaciones_'+bt_count2+'" placeholder="ingrese alguna observacion" required></div></div><br></div><div class="col-md-offset-5"><button id="guardarjobs" class="btn btn-primary center"> Guardar</button></div></div>'); 
+           $(".jobs_new").append('<kbd>trabajo adicional '+bt_count2+'</kbd><div class="panel-body"><div class="panel-body"> <div class="row"><div class="col-md-2"><label  class="" for="nombre">Nombre de empresa</label></div><div class="col-md-4"><input  class="form-control" type="text" name="nombre_empresa_'+bt_count2+'"  id="nombre_empresa_'+bt_count2+'" placeholder="ingrese nombre" required></div></div><br><div class="row "><div class="col-md-2"><label  class="" for="apellido">Cargo</label></div><div class="col-md-4"><input  class="form-control" type="text" name="cargo_'+bt_count2+'"  id="cargo_'+bt_count2+'" placeholder="ingrese Apellido" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="cedula">fecha entrada</label></div><div class="col-md-4"><input  class="form-control" type="date" name="fecha_entrada_'+bt_count2+'  id="fecha_entrada_'+bt_count2+'" placeholder="ingrese Cedula" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Trabajas aqui Actualmente?</label></div><div class="col-md-4"><input type="checkbox" value="1" id="checkbox_jobs_'+bt_count2+'"></div></div><div class="row"><div class="col-md-2"><label  class="" for="email">fecha salida</label></div><div class="col-md-4"><input id="fecha_salida_jobs'+bt_count2+'" class="form-control" type="date" name="fecha_Salida_'+bt_count2+'" placeholder="" ></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Direccion de empresa</label></div><div class="col-md-4"><input  class="form-control" type="text" name="direccion_empresa_'+bt_count2+'" id="direccion_empresa_'+bt_count2+'" placeholder="ingrese Direccion" required></div></div><br><div class="row"><div class="col-md-2"><label  class="" for="direccion">Observaciones</label></div> <div class="col-md-4"><input  class="form-control" type="text" name="observaciones_'+bt_count2+'" id="observaciones_'+bt_count2+'" placeholder="ingrese alguna observacion" required></div></div><br></div></div>'); 
 
         bt_count2 ++;
         console.log(bt_count);
@@ -253,8 +256,7 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
 
        });
 
-
-       $('#guardardatos').on("click",function(){
+function edituser(id_user){
         var nombre= $('#nombre').val();
         var apellido= $('#apellido').val();
         var email= $('#email').val();
@@ -282,21 +284,48 @@ $estudies =' <div class="panel-body"><div class="panel-body"> <div class="row">
             alert('Por favor ingrese su telefono');
         }
         else{
-            alert('Registro guardado con exito');
+            var data=$('#formdata').serialize();
+            console.log(data);
+                $.ajax({
+                url:"edituser/"+id_user+"",
+                method:'POST',
+
+                data: data,
+                
+                success: function( result ) {
+                   console.log('exitoso');
 
             $('#collapse1').collapse();
             $('#collapse2').collapse();
+
+                   
+                },
+                complete: function(){
+
+                    // Handle the complete event
+                },
+                error: function(xhr,statusText){
+                   console.log(xhr.overrideMimeType( "text/plain; charset=x-user-defined" ));
+                  console.log(statusText);
+                    // Handle the complete event
+                }
+            });
+
         }
 
-       });
+       };
+
+
 
        $('#checkbox_jobs_0').on('change',function () {
          $('#fecha_salida_0').attr('disabled','disabled');
          $('#fecha_salida_0').val('');
        });
 
-$('#experiencia_laboral').on("click",function () {
-     var nombre= $('#nombre').val();
+
+
+        $('#experiencia_laboral').on("click",function () {
+          var nombre= $('#nombre').val();
         var apellido= $('#apellido').val();
         var email= $('#email').val();
         var cedula= $('#cedula').val();
