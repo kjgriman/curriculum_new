@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Auth;
+
+use App\Category;
+use App\User;
+
 use App\job;
 
 class JobsController extends Controller
@@ -18,6 +24,31 @@ class JobsController extends Controller
     public function index()
     {
         //
+
+       $value = job::all();
+        $data_1='<table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="bg bg-danger">Empresa</th>
+        <th class="bg bg-danger">Cargo</th>
+        <th></th>        
+      </tr>
+    </thead>
+    <tbody id="row1"> ';
+      
+      for($i=0; $i<count($value);$i++) {
+          # code...
+      
+     $data_2='
+      <tr id="row2"><td>'.$value[$i]['name_company'].'</td><td>'.$value[$i]['cargo'].'</td><th><button class="btn btn-danger">Eliminar</button></th></tr>';
+        }  
+       
+     $data_3='</tbody>
+  </table>';
+  $data_4=$data_1.$data_2.$data_3;
+       
+      
+       return ($data_4);
     }
 
     /**
@@ -38,41 +69,36 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        dump($request->all());
-        $data =$request->except(['_token']);
-        foreach ($data as $key => $value){
-           
 
-            foreach ($value as $item => $value1) {
-                dump($item);
-                dump($value1);
+
+
 
                 job::insert([
-//
-                    'name_company' => $value1,
-                    'cargo' =>  $value1,
-                    'date_in' =>  $value1,
-                    'date_out' =>  $value1,
-                    'ubication_company' =>  $value1,
-                    'observation' =>  $value1,
+                    'id_user' =>$request->id_user,
+                    'name_company' =>$request->name_company,
+                    'cargo' => $request->cargo,
+                    'date_in' =>  $request->date_in,
+                    'date_out' => $request->date_out ,
+                    'ubication_company' =>  $request->ubication_company,
+                    'observation' =>  $request->observation,
                     'actuality'=> true
                 ]);
 
-
-            }
-
+}
 
 
+        
+        //
+//         dump($request->all());
+//         foreach ($data as $key => $value){         
+//             foreach ($value as $item => $value1) {           
+// //                
+//                 }
+//         dump($value[]);
+//     }
 
 
-    }
-
-//        job::insert([
-//            'name_category' => $request->createcategory,
-//            'description_category' => $request->descriptioncategory]);
-
-    }
+    
 
     /**
      * Display the specified resource.

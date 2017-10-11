@@ -3,8 +3,10 @@
 use Illuminate\Http\Request;
 use App\Category;
 use App\User;
+use App\job;
 use App\course;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
 
@@ -64,9 +66,12 @@ catch(Exception $e)  {
     }
 
     public function View (){
+        $id_user=Auth::user()->id;
+
+        $data2=job::where('id_user',$id_user)->get();
         $data= User::all();
         //dump($data->all);
 
-    return view('lifepage');
+    return view('lifepage',compact('data','data2'));
     }
 }

@@ -29,4 +29,5 @@ Route::get('/lifepage', 'CategoryController@View');
 Route::post('/create_category', 'CategoryController@create');
 Route::post('/create_course', 'CourseController@create');
 Route::post('/create_jobs', 'JobsController@store');
+Route::get('/show_jobs', 'JobsController@index');
 });
