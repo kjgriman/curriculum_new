@@ -10,7 +10,9 @@
         "laravel/framework": "5.2.*",
         "acacha/admin-lte-template-laravel": "2.*",
         "laravelcollective/html": "^5.2.0",
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "barryvdh/laravel-dompdf": "0.6.*",
+        "zanysoft/laravel-pdf": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

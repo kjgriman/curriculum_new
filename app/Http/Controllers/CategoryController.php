@@ -5,10 +5,12 @@ use App\Category;
 use App\User;
 use App\job;
 use App\course;
+use App\study;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-
 use App\Http\Requests;
+
+use ZanySoft\LaravelPDF\PDF;
 
 
 class CategoryController extends Controller
@@ -50,17 +52,14 @@ catch(Exception $e)  {
                 Session::push('status', 'Categoria Eliminada exitosamente!');
                 return redirect('category');
             }else {
-
+Session::push('status', 'Erro al eliminarr!');
+                return redirect('category');
         //dd($request);
 
-        Category::insert([
-            'name_category' => $request->createcategory,
-            'description_category' => $request->descriptioncategory
-        ]);
-        return redirect('category')->with('status','Categoria creada exitosamente!');
-                Session::push('status', 'Categoria Eliminada exitosamente!');
-                return redirect('category');
-            }}catch(Exception $e)  {
+        
+        
+            }
+        }catch(Exception $e)  {
             echo 'ERROR: ',  $e->getMessage(), "\n";
         }
     }
@@ -69,9 +68,35 @@ catch(Exception $e)  {
         $id_user=Auth::user()->id;
 
         $data2=job::where('id_user',$id_user)->get();
+
+        $data4=study::where('id_user',$id_user)->get();
         $data= User::all();
         //dump($data->all);
 
-    return view('lifepage',compact('data','data2'));
+    return view('lifepage',compact('data','data2','data4'));
     }
+
+   
+
+    public function invoice() 
+    {
+
+        $id_user=Auth::user()->id;
+
+        $data4=job::where('id_user',$id_user)->get();
+
+        $data2=study::where('id_user',$id_user)->get();
+
+    $data = [
+        'study' => $data2,
+        'jobs' => $data4
+        
+    ];
+    $pdf = new PDF();
+    $pdf->loadView('pdf',['data'=>$data]);
+    $pdf->stream('pdf');
+      
+
+    }
+    
 }

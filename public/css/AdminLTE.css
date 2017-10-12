@@ -53,8 +53,8 @@ body {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-family: sans-serif;
+  font-weight: 300;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -125,7 +125,11 @@ body {
     transform: translate(230px, 0);
   }
 }
-.content-wrapper,
+.content-wrapper{
+    min-height: 100%;
+    z-index: 800;
+    background: url('../img/fondokerbin.png');
+}
 .right-side {
   min-height: 100%;
   background-color: #ecf0f5;

@@ -66,7 +66,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        dump($data);
+        // dump($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

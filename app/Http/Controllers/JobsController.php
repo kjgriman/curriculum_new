@@ -6,12 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Auth;
-
 use App\Category;
 use App\User;
-
 use App\job;
 
 class JobsController extends Controller
@@ -24,31 +21,10 @@ class JobsController extends Controller
     public function index()
     {
         //
-
-       $value = job::all();
-        $data_1='<table class="table table-hover">
-    <thead>
-      <tr>
-        <th class="bg bg-danger">Empresa</th>
-        <th class="bg bg-danger">Cargo</th>
-        <th></th>        
-      </tr>
-    </thead>
-    <tbody id="row1"> ';
+        $id_user=Auth::user()->id;
+        $valuerefresh = job::where('id_user',$id_user)->get();
       
-      for($i=0; $i<count($value);$i++) {
-          # code...
-      
-     $data_2='
-      <tr id="row2"><td>'.$value[$i]['name_company'].'</td><td>'.$value[$i]['cargo'].'</td><th><button class="btn btn-danger">Eliminar</button></th></tr>';
-        }  
-       
-     $data_3='</tbody>
-  </table>';
-  $data_4=$data_1.$data_2.$data_3;
-       
-      
-       return ($data_4);
+       return view('tabletjobs',compact('valuerefresh'));
     }
 
     /**
@@ -69,20 +45,44 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
+        if(isset($request->checkbox_jobs)){
+            $check=$request->checkbox_jobs;
+        }
+        else{
+            $check=0;
+        }
 
+        if($check==1){
 
+            $out=7819103011;
+            $date_out=0;
+            $in=strtotime($request->date_in);
+           
 
+        }
+        else{
+            $date_out=$request->date_out;
 
+            $out=strtotime($request->date_out);
+            $in=strtotime($request->date_in);
+        }
+
+            if($out>$in){
                 job::insert([
                     'id_user' =>$request->id_user,
                     'name_company' =>$request->name_company,
                     'cargo' => $request->cargo,
                     'date_in' =>  $request->date_in,
-                    'date_out' => $request->date_out ,
+                    'date_out' => $date_out ,
                     'ubication_company' =>  $request->ubication_company,
                     'observation' =>  $request->observation,
-                    'actuality'=> true
+                    'actuality'=> $check
                 ]);
+            }
+            else{
+                return view('errors.503');
+            }
+                
 
 }
 
@@ -140,8 +140,21 @@ class JobsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_job)
     {
+         try{
+            $job = job::findOrFail($id_job);
+            if ($job != null){
+                $job->delete();
+            }else {
+                Session::push('status', 'Categoria Eliminada exitosamente!');
+                return redirect('category');
+       
+            }
+        }catch(Exception $e)  {
+            echo 'ERROR: ',  $e->getMessage(), "\n";
+        }
         //
     }
+
 }

@@ -36,7 +36,7 @@
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Phone Number" name="telefono" value="{{ old('phonenumber') }}" required/>
+                    <input type="number" class="form-control" placeholder="Phone Number" name="telefono" value="{{ old('phonenumber') }}" required minlength="7" />
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
@@ -44,11 +44,11 @@
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="{{ trans('adminlte_lang::message.password') }}" name="password" required/>
+                    <input type="password" class="form-control" placeholder="{{ trans('adminlte_lang::message.password') }}" name="password" required minlength="5" />
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="{{ trans('adminlte_lang::message.retrypepassword') }}" name="password_confirmation" required/>
+                    <input type="password" class="form-control" placeholder="{{ trans('adminlte_lang::message.retrypepassword') }}" name="password_confirmation" required minlength="5"/>
                     <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                 </div>
                 <div class="row">
@@ -63,17 +63,17 @@
                     </div><!-- /.col -->
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <button type="button" class="btn btn-block btn-flat" data-toggle="modal" data-target="#termsModal">{{ trans('adminlte_lang::message.terms') }}</button>
+                            <button type="button" class="btn btn-block btn-flat" data-toggle="modal" data-target="#termsModal">Acepto los términos</button>
                         </div>
                     </div><!-- /.col -->
                     <div class="col-xs-4 col-xs-push-1">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('adminlte_lang::message.register') }}</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarse</button>
                     </div><!-- /.col -->
                 </div>
             </form>
 
 
-            <a href="{{ url('/login') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
+            <a href="{{ url('/login') }}" class="text-center">Ya tengo una cuenta</a>
         </div><!-- /.form-box -->
     </div><!-- /.register-box -->
 
