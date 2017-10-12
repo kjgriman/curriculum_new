@@ -12,8 +12,6 @@
     </style>
   </head>
   <body>
-    
-
  
     <main>
       <div id="details" class="clearfix">
@@ -29,11 +27,40 @@
       </div>
       <br><br>
                      <div >
-                       <table class="table">
+                       <table>
                         <thead>
                           Experiencia laboral
-                          <tr style="background: gray;">
-                            <th class="">Nr.</th>
+                          <tr style="background: #f9f9f9;">
+                            <th class="">#</th>
+                            <th class="">Tipo de estudio</th>
+                            <th class="">Carrera</th>
+                            <th class="">status</th>
+                            <th class="">Nombre de la institucion</th>
+                            <th class="">Ubicacion de la institucion</th>
+                            <th class="">fecha de ingreso</th>
+                            <th class="">fecha de egreso</th>
+                            <th class="">promedio de notas</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+
+                        
+                            
+                          
+                          
+                         
+                        </tbody>
+                      </table>
+                    </div>
+
+                     <div >
+                       <table>
+                        <thead>
+                          Estudios Realizados
+                          <tr style="background: #f9f9f9;">
+                            <th class="">#</th>
                             <th class="">Nombre de Empresa</th>
                             <th class="">Cargo</th>
                             <th class="">Fecha de Ingreso</th>
@@ -46,23 +73,6 @@
                         <tbody>
                           
                             
-                            @foreach($data as $key => $value)
-                              @foreach($value as $key1 => $value2)
-
-                                <tr style="font-size: 10px; background: #f5f5f5;" >
-                                  <td>{{$key1 +1}}</td>
-                                  <td>{{$value[$key1]['name_company']}}</td>
-                                  <td>{{$value[$key1]['cargo']}}</td>
-                                  <td>{{$value[$key1]['date_in']}}</td>
-                                  <td>{{$value[$key1]['date_out']}}</td>
-                                  <td>{{$value[$key1]['ubication_company']}}</td>
-                                  <td>{{$value[$key1]['observation']}}</td>
-                                  
-                                           
-                                </tr>
-                                @endforeach
-                          @endforeach
-                         
                         </tbody>
                       </table>
                     </div>

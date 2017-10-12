@@ -27,7 +27,7 @@ $estudies =' ';
 
 
 <div class="container">
-    <div class=""><h3>Hoja de vida <small>Su id es: {{ Auth::user()->id}}</small></h3> </div>
+    <div class=""><h3>Hoja de vida {{link_to_action('CategoryController@invoice','')}} </h3>  </div>
         <hr>
 
         <br>
@@ -100,7 +100,9 @@ $estudies =' ';
                           <tr>
                             <th class="bg bg-danger">Empresa</th>
                             <th class="bg bg-danger">Cargo</th>
-                            <th class="bg bg-danger"></th>
+                            <th class="bg bg-danger">Periodo</th>
+                            <th class="bg bg-danger">Descripcion del cargo</th>
+                            <th style="text-align:right;background: #f5f5f5;">Accion</th>
                             
                           </tr>
                         </thead>
@@ -113,7 +115,13 @@ $estudies =' ';
                           <tr id="row2_{{$key}}">
                             <td>{{$value->name_company}}</td>
                             <td>{{$value->cargo}}</td>
-                            <td align="right"><a onclick="deleteJob({{ $value->id_jobs }},'{{ $key }}')" class="btn btn-danger"><span class="fa fa-trash"></span> Eliminar</a>
+                            <td>{{$value->date_in}} / @if($value->date_out==0)
+                                Actualidad
+                                @else
+                                {{$value->date_out}} 
+                                 @endif</td>
+                            <td>{{$value->observation}}</td>
+                            <td align="right" style=""><a onclick="deleteJob({{ $value->id_jobs }},'{{ $key }}')" class="btn btn-danger"><span class="fa fa-trash"></span> Eliminar</a>
                             </td>
                                      
                           </tr>
@@ -250,9 +258,9 @@ $estudies =' ';
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-4"><label  class="" for="direccion">Descripción de responsabilidades
+                            <div class="col-md-4"><label  class="" for="direccion">Descripcion del cargo
 </label></div>
-                            <div class="col-md-8"><input  id="observaciones" class="form-control" type="text" name="observation" id="observaciones_0" placeholder="ingrese alguna observacion" required></div>
+                            <div class="col-md-8"><input  id="observaciones" class="form-control" type="text" name="observation" id="observaciones_0" placeholder="ingrese descripcion del cargo" required></div>
                         </div>
                         <br>
 
