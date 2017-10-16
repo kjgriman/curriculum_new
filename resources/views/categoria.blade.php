@@ -141,7 +141,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Crear cursos</h4>
 				</div>
-				<form id="course" action="create_course" method="POST">
+				<form id="course" action="create_course" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 					<div class="modal-body">
 						<label>Nombre del curso </label><input name="createcourse" id="createcourse" type="text" placeholder="Ingrese nombre de categoria" required class="form-control" minlength="3">
@@ -159,6 +159,10 @@
 					</div>
 					<div class="modal-body">
 						<label>Descripcion del curso</label><textarea name="descriptioncourse" id="descriptioncourse"   required class="form-control" minlength="5" placeholder="Ingrese la Descripcion de la categoria"></textarea>
+					</div>
+				
+					<div class="modal-body">
+						<label for="imgmedalla">Cargar imagen de Medalla</label><input name="imgmedalla" id="imgmedalla"   required class="form-control" type="file" accept=".jpg, .png, .jpeg, .pdf"></textarea>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -189,6 +193,7 @@
 							<th>Nombre de Curso</th>
 							<th>Categoria de Curso</th>
 							<th>Descripcion de curso</th>
+							<th>medalla</th>
 							<th></th> <th></th>
 						</tr>
 						</thead>
@@ -199,6 +204,7 @@
 								<td>{{ $getCourse->name_courses}}</td>
 								<td>{{ $getCourse->name_category }}</td>
 								<td>{{ $getCourse->description_courses }}</td>
+								<td><img width="50px" src="img/imgmedalla/{{$getCourse->imgmedalla }}"></td>
 								
 								<td><a onclick="deleteCourse({{ $getCourse->id_courses }},'{{$key}}')" class="btn btn-danger">Eliminar</a></td>
 							</tr>

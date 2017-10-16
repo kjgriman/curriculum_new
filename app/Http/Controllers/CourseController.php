@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use core\session\exception;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Storage;
+use Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\View;
+
 
 use App\Http\Requests;
 use App\course;
@@ -23,14 +28,20 @@ class CourseController extends Controller
 
     public function create (Request $request){
 
-//       dump($request);
-        //$data1= course::all();
-        //$data= Category::all();
+
+      $img= $request->file('imgmedalla');
+      $file_route= time().'_'.$img->getClientOriginalName();
+      // // Storage::disk('public')->put($file_route, file_get_contents($img->getRealPath()));
+      // $file_route->move('img');
+             $request->file('imgmedalla')->move('img/imgmedalla',$file_route);
+        $data1= course::all();
+        $data= Category::all();
 try {
     course::insert([
         'id_category' => $request->category_asoc,
         'name_courses' => $request->createcourse,
-        'description_courses' => $request->descriptioncourse
+        'description_courses' => $request->descriptioncourse,
+        'imgmedalla' => $file_route
     ]);
     //return view ('categoria',compact('data','data1'));
     Session::push('status', 'Curso creado exitosamente!');

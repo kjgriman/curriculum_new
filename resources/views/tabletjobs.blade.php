@@ -9,7 +9,7 @@
                                 {{$value->date_out}} 
                                  @endif</td>
         <td>{{$value->observation}}</td>
-        <td align="right" style=""><a onclick="deleteJob({{ $value->id_jobs }},'{{ $key }}')" class="btn btn-danger"><span class="fa fa-trash"></span> Eliminar</a>
+        <td align="right" style=""><a onclick="deletestudies({{ $value->id_jobs }},'{{ $key }}')" class="btn btn-danger"><span class="fa fa-trash"></span> Eliminar</a>
                             </td>               
       </tr>
       @endforeach

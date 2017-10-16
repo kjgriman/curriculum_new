@@ -27,7 +27,7 @@ $estudies =' ';
 
 
 <div class="container">
-    <div class=""><h3>Hoja de vida {{link_to_action('CategoryController@invoice','')}} </h3>  </div>
+    <div class=""><h3>Hoja de vida {{link_to_action('CategoryController@invoice','Imprimir CV - PDF',NULL,['class'=>'btn btn-primary'])}} </h3>  </div>
         <hr>
 
         <br>
@@ -372,7 +372,6 @@ $estudies =' ';
                             <br>
                             </div>
                             <div class="col-md-4 col-md-offset-8"><a class="btn btn-primary center" onclick="create_estudies()" id="guardardatos"><span class="fa fa-save"></span> Guardar y Continuar</a></div>
-<input type="submit" name="enviar">
                             </div>
 
 
@@ -732,6 +731,22 @@ console.log(date_out);
         }
     // body...
 })
+        $('#status_studies').on('change',function () {
+        if( $('#status_studies').val() == 'en curso' ){
+        // Hacer algo si el checkbox ha sido seleccionado
+         $('#date_out_studies').attr('disabled','disabled');
+         $('#date_out_studies').val('');
+        
+    } else if( $('#status_studies').val() == 'abandonado' ||  $('#status_studies').val() == 'culminado') {
+        // Hacer algo si el checkbox ha sido deseleccionado
+      
+         $('#date_out_studies').attr('disabled',false);
+         $('#date_out_studies').val('');
+    }
+        // console.log('sss');
+        //  $('#fecha_salida_0').attr('disabled','disabled');
+        //  $('#fecha_salida_0').val('');
+       });
     </script>
 
 

@@ -87,15 +87,14 @@ Session::push('status', 'Erro al eliminarr!');
 
         $data2=study::where('id_user',$id_user)->get();
 
-    $study = [
-        'study' => $data2       
-    ];
-    $jobs = [
+    $data = [
+        'study' => $data2  ,
         'jobs' => $data4      
     ];
+  
 
     $pdf = new PDF();
-    $pdf->loadView('pdf',['study'=>$study, 'jobs'=>$jobs]);
+    $pdf->loadView('pdf',['data'=>$data]);
     $pdf->stream('pdf');
       
 
