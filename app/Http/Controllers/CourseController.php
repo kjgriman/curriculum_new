@@ -27,13 +27,19 @@ class CourseController extends Controller
 
 
     public function create (Request $request){
+        $size= File::size($request->file('imgmedalla'));
+        
 
-
-      $img= $request->file('imgmedalla');
-      $file_route= time().'_'.$img->getClientOriginalName();
-      // // Storage::disk('public')->put($file_route, file_get_contents($img->getRealPath()));
-      // $file_route->move('img');
+        if($request->file('imgmedalla') && $size<1000000){
+              $img= $request->file('imgmedalla');
+              $file_route= time().'_'.$img->getClientOriginalName();
              $request->file('imgmedalla')->move('img/imgmedalla',$file_route);
+         }else{
+
+            $file_route=null;
+            return 'error al cargar la imagen procure que el peso no supere 1 mega';
+         }
+
         $data1= course::all();
         $data= Category::all();
 try {

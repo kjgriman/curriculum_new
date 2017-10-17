@@ -10,6 +10,8 @@
  * Core: General Layout Style
  * -------------------------
  */
+
+
  input:valid, textarea:valid {
 
 border:1px solid green;

@@ -69,6 +69,7 @@ try {
     }
     public function showCategory()
     {
+        $data2=User::all();
         $data1= course::all();
         $data= Category::all();
         $getCourses = DB::table('courses')
@@ -76,6 +77,13 @@ try {
              ->select('*')
              ->get();
         # code...
-        return view('/categoria',compact('data','data1', 'getCourses'));
+        return view('/categoria',compact('data','data1', 'getCourses','data2'));
+    }
+
+
+    public function prueba(){
+        $xxx= course::all();
+
+        return view('hector',compact('xxx'));
     }
 }
