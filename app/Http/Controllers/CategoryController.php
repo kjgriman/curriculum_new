@@ -5,11 +5,13 @@ use App\Category;
 use App\User;
 use App\job;
 use App\course;
+use App\User_course;
 use App\study;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 
+use DB;
 use ZanySoft\LaravelPDF\PDF;
 
 
@@ -80,14 +82,21 @@ Session::push('status', 'Erro al eliminarr!');
 
     public function invoice() 
     {
+     $id_user=Auth::user()->id;
 
-        $id_user=Auth::user()->id;
+           $getUserCourses = DB::table('user_course')
+             ->join('courses', 'user_course.id_course', '=', 'courses.id_courses')
+             ->select('*')->where('id_user',$id_user)
+             ->get();
+
+       
 
         $data4=job::where('id_user',$id_user)->get();
 
         $data2=study::where('id_user',$id_user)->get();
 
     $data = [
+        'getUserCourses'=>$getUserCourses,
         'study' => $data2  ,
         'jobs' => $data4      
     ];

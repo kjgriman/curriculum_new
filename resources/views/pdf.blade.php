@@ -37,6 +37,7 @@
           <?php 
           $countstudy=count($data['study']);
           $countjob=count($data['jobs']);
+          $countusercourse=count($data['getUserCourses']);
 
           ?>
        
@@ -135,24 +136,35 @@
                        <table>
                         <thead>
                          <tr>
-                            <th colspan="9" style="font-size: 25px; background: white;" align="left"><span class="fa fa-id"> <img width="30px" src="img/work.png"></span> Cursos aprobados </th>
+                            <th colspan="9" style="font-size: 25px; background: white;" align="left"><span class="fa fa-id"> <img width="30px" src="img/libros.png"></span> Cursos aprobados </th>
                           </tr>
                           <tr style="background: #f2f2f2;">
+                                  <th>Medalla</th>
+                                  <th>Fecha de Aprobacion</th>
                             
-                            <th class="">Fecha de Ingreso</th>
-                            <th class="">Fecha de Egreso</th>
+                            <th class="">descripcion del curso</th>
+                      <th class="">nombre del curso</th>
                            
                           </tr>
                         </thead>
                         <tbody >
-                            @for($i=0;$i<$countjob;$i++)
+                          <?php
+$epoch=$data['getUserCourses'][$i]->date_asignation;
+$fecha=date('Y-M-d',$epoch);
+
+                          ?>
+
+                            @for($i=0;$i<$countusercourse;$i++)
                           <tr style="background: #f5f5f5;" >
-                            <td><small> {{$data['jobs'][$i]['date_out']}}</small></td>
-                            <td><small> {{$data['jobs'][$i]['date_in']}}</small></td>
+                           <td><img width="30px" height="30px" src="img/imgmedalla/{{$data['getUserCourses'][$i]->imgmedalla}}"></td>
+
                            
+                            <td><small> {{$fecha}}</small></td>
+                            <td><small> {{$data['getUserCourses'][$i]->description_courses}}</small></td>
+                            <td><small> {{$data['getUserCourses'][$i]->name_courses}}</small></td>
+
                           </tr>
                          @endfor
-                    
                           
                             
                         </tbody>
