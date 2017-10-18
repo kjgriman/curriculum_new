@@ -995,6 +995,7 @@ class ComposerStaticInit28842efa338c46d06795dfcdd4af8c7f
         'Text_Renderer' => __DIR__ . '/..' . '/dompdf/dompdf/include/text_renderer.cls.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UCDN' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ucdn.php',
+        'UserCourse' => __DIR__ . '/../..' . '/database/migrations/2017_10_18_002340_user_course.php',
         'bmp' => __DIR__ . '/..' . '/mpdf/mpdf/classes/bmp.php',
         'cssmgr' => __DIR__ . '/..' . '/mpdf/mpdf/classes/cssmgr.php',
         'directw' => __DIR__ . '/..' . '/mpdf/mpdf/classes/directw.php',

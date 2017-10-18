@@ -656,6 +656,7 @@ return array(
     'Text_Renderer' => $vendorDir . '/dompdf/dompdf/include/text_renderer.cls.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'UCDN' => $vendorDir . '/mpdf/mpdf/classes/ucdn.php',
+    'UserCourse' => $baseDir . '/database/migrations/2017_10_18_002340_user_course.php',
     'bmp' => $vendorDir . '/mpdf/mpdf/classes/bmp.php',
     'cssmgr' => $vendorDir . '/mpdf/mpdf/classes/cssmgr.php',
     'directw' => $vendorDir . '/mpdf/mpdf/classes/directw.php',

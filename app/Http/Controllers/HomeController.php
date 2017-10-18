@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\course;
 use App\User;
+use App\User_course;
 use DB;
 use Illuminate\Support\Facades\Session;
 
@@ -69,6 +70,9 @@ try {
     }
     public function showCategory()
     {
+
+        $usercouse=User_course::all();
+
         $data2=User::all();
         $data1= course::all();
         $data= Category::all();
@@ -77,13 +81,9 @@ try {
              ->select('*')
              ->get();
         # code...
-        return view('/categoria',compact('data','data1', 'getCourses','data2'));
+        return view('/categoria',compact('data','data1', 'getCourses','data2','usercourse'));
     }
+ 
 
-
-    public function prueba(){
-        $xxx= course::all();
-
-        return view('hector',compact('xxx'));
-    }
+   
 }

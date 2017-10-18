@@ -9,7 +9,7 @@ use Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 
-
+use App\User_course;
 use App\Http\Requests;
 use App\course;
 use App\Category;
@@ -88,5 +88,27 @@ try {
 
         return redirect('category') ->with('status' , 'curso creado exitosamente!');
 
+    }
+
+
+     public function storeusercourse(Request $request){
+// dump($request);
+        $veriusercourse=User_course::select('id_usercourse')->where('id_user',$request->id_user)->where('id_course',$request->id_course)->get();
+
+        if ( count($veriusercourse) > 0) {
+            return '<div class="alert alert-danger">Este usuario ya le fue asignado este curso...</div>';
+            # code...
+        }
+        else{
+           
+            User_course::insert([
+            'id_user' => $request->id_user,
+            'id_course' => $request->id_course,
+            'date_asignation' => $request->date_asignation
+        ]);
+         return '<div class="alert alert-success">Registro Exitoso</div>';
+        }
+
+        
     }
 }

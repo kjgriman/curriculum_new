@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
  Route::auth();
 Route::group(['middleware' => 'web'], function () {
-	Route::get('/1','HomeController@prueba');
+Route::post('createusercourse','CourseController@storeusercourse');
    
     Route::get('/admin', 'HomeController@index');
  

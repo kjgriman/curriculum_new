@@ -108,9 +108,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Visualizar Usuarios</h4>
+					<h4 class="modal-title">Visualizar Usuarios</h4><div class="hidden" id="mensajeusercourse">ddd</div>
 				</div>
-				<form >
+				
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="modal-body">
 					<div class="tab">
@@ -124,6 +124,7 @@
 					      </tr>
 					    </thead>
 					    <tbody>
+					    	
 					    	<?php
 								$i=1;
 					    	?>
@@ -131,18 +132,21 @@
 					  		 <tr id="content{{$key2}}">
 					  		 	<td>{{$i}}</td>
 					      <td class="mdl-data-table__cell--non-numeric">{{ $value2['name'] }}</td>
-					      <td>{{$value2['cedula']}}</td>
+					      <td>{{$value2['cedula']}}<input type="hidden" name="id_user" value="{{ $value2['id'] }}"></td>
 					      <td>{{$value2['email']}}</td>
 					<td>	
-						<select class="form-control" name="category_asoc" id="category_asoc">
+						<input type="hidden" name="id_course" value="1111">
+						<select class="form-control" name="category_asoc{{$key2}}" id="category_asoc{{$key2}}">
 							<option value="0">Seleccione...</option>
 								@foreach ($data1 as $key4 => $value4)
 									<option value="{{$value4['id_courses']}}">{{strtoupper($value4['name_courses'])}}</option>
 								@endforeach
 
 						</select>
+
+					<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 <td>
-					<a  class="btn btn-success">Asignar curso aprobado</a>
+					<button onclick="createusercourse({{$value2['id']}},{{$key2}});" class="btn btn-success">Asignar curso aprobado</a>
 </td></td>
 					    <!--  @foreach ($data1 as $key4 => $value4)
 					     	<td style="background:#f2f2f2" align="center">{{$value4['name_courses']}} <br><input type="checkbox" name=""></td>
@@ -163,7 +167,7 @@
 					<button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
 
 				</div>
-				</form>
+				
 			</div>
 
 		</div>
@@ -379,6 +383,54 @@
                 }
             });
 
+
+		}
+
+		function createusercourse(id_user,key2){
+			if($('#category_asoc'+key2+'').val()!=0){
+var id_course=$('#category_asoc'+key2+'').val();
+var token = $('#_token').val();
+
+console.log(id_course);
+console.log(key2);
+console.log(id_user);
+var date_asignation= new Date().getTime()/1000;
+console.log(date_asignation);
+
+ $.ajax({
+                url:"createusercourse",
+                method:'POST',
+
+                data:  {id_user: id_user, id_course: id_course, date_asignation: date_asignation,_token:token},
+                
+                success: function( result, statusText ) {
+                   console.log(result);
+                   console.log(statusText);
+                   // $('#row3').load('show_studies','valuerefresh');
+                   // // console.log(result);
+                   $('#mensajeusercourse').delay(100).show(100);
+
+                   $('#mensajeusercourse').attr('class','text');
+                   $('#mensajeusercourse').html(result);
+                   console.log('ok1');
+                   $('#mensajeusercourse').delay(2000).hide(600);
+                     },
+               
+                error: function(xhr,statusText){
+                   console.log(xhr.overrideMimeType( "text/plain; charset=x-user-defined" ));
+                  console.log(statusText);
+                   $('#mensajeusercourse').delay(100).show(100);
+                   $('#mensajeusercourse').attr('class','alert alert-danger');
+                   $('#mensajeusercourse').html('Hubo un error no se pudo realizar el proceso');
+                   console.log('ok1');
+                   $('#mensajeusercourse').delay(2000).hide(600);
+                  
+                }
+            });
+}
+else{
+	alert('debe seleccionar un curso');
+}
 
 		}
 
