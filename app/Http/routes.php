@@ -19,6 +19,7 @@ Route::group(['middleware' => 'web'], function () {
 Route::post('createusercourse','CourseController@storeusercourse');
    
     Route::get('/admin', 'HomeController@index');
+    Route::get('/showcourseaproved', 'CourseController@showcourseaproved');
  
 Route::get('/category', 'HomeController@showCategory');
 Route::get('/deletecategory/{id_category}', 'CategoryController@destroyCategory');
@@ -40,6 +41,7 @@ Route::get('/deletestudies/{id_studies}', 'studyController@destroy');
 Route::post('/create_studies', 'studyController@create');
 
 Route::get('/pdf','CategoryController@invoice');
+Route::get('/certificadopdf','CourseController@invoice');
 });
 
 

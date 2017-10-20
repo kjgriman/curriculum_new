@@ -19,8 +19,12 @@
                 <a href="category"><i class='fa fa-cogs'></i> <span>{{ trans('adminlte_lang::message.admincourse') }}</span> </a>
 
             </li>
-            <li><a href="lifepage"><i class='fa fa-clipboard'></i> <span>{{ trans('adminlte_lang::message.pagelife') }}</span></a>
-               </li>
+            <li>
+                <a href="lifepage"><i class='fa fa-clipboard'></i> <span>{{ trans('adminlte_lang::message.pagelife') }}</span></a>
+            </li>
+            <li>
+                <a href="showcourseaproved"><i class='fa fa-clipboard'></i> <span>Cursos aprovados</span></a>
+            </li>
 
         </ul><!-- /.sidebar-menu -->
     </section>

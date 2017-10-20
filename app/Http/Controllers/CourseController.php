@@ -8,11 +8,14 @@ use Illuminate\Http\Request;
 use Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
-
+use Illuminate\Support\Facades\Auth;
 use App\User_course;
 use App\Http\Requests;
 use App\course;
 use App\Category;
+
+use ZanySoft\LaravelPDF\PDF;
+use DB;
 
 use Illuminate\Support\Facades\Session;
 
@@ -110,5 +113,38 @@ try {
         }
 
         
+    }
+
+    public function showcourseaproved(){
+    $id_user=Auth::user()->id;
+
+           $getUserCourses = DB::table('user_course')
+             ->join('courses', 'user_course.id_course', '=', 'courses.id_courses')
+             ->select('*')->where('id_user',$id_user)
+             ->get();       
+
+  
+        return view('showcourseaproved', compact('getUserCourses'));
+    }
+
+     public function invoice(Request $request){
+ 
+        $id_usercourse=$request->id_usercourse;
+     $id_user=Auth::user()->id;
+
+           $getUserCourses = DB::table('user_course')
+             ->join('courses', 'user_course.id_course', '=', 'courses.id_courses')
+             ->select('*')->where('id_usercourse',$id_usercourse)
+             ->get();    
+
+              $data = [
+                    'getUserCourses'=>$getUserCourses                   
+                     ];
+  
+
+        $pdf = new PDF();
+        $pdf->loadView('certificadopdf',['data'=>$data]);
+        $pdf->stream('certificadopdf');   
+
     }
 }

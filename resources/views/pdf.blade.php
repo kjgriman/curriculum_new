@@ -21,7 +21,7 @@
       
     </style>
   </head>
-  <body background="img/arrow1.png" >
+  <body  >
  
     <main>
       <div id="" class="">
@@ -148,16 +148,16 @@
                           </tr>
                         </thead>
                         <tbody >
-                          <?php
-$epoch=$data['getUserCourses'][$i]->date_asignation;
-$fecha=date('Y-M-d',$epoch);
-
-                          ?>
+                          
 
                             @for($i=0;$i<$countusercourse;$i++)
                           <tr style="background: #f5f5f5;" >
                            <td><img width="30px" height="30px" src="img/imgmedalla/{{$data['getUserCourses'][$i]->imgmedalla}}"></td>
+<?php
+$epoch=$data['getUserCourses'][$i]->date_asignation;
+$fecha=date('Y-M-d',$epoch);
 
+                          ?>
                            
                             <td><small> {{$fecha}}</small></td>
                             <td><small> {{$data['getUserCourses'][$i]->description_courses}}</small></td>
