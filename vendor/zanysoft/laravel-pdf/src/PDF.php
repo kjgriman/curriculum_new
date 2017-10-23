@@ -35,6 +35,7 @@ Class PDF extends mPDF {
             $this->getConfig('margin_header'),     // margin header
             $this->getConfig('margin_footer'),     // margin footer
             $this->getConfig('orientation')        // L - landscape, P - portrait
+            
         );
 
         $font_data = include(__DIR__ . '/fontdata.php');

@@ -19,9 +19,12 @@ Route::group(['middleware' => 'web'], function () {
 Route::post('createusercourse','CourseController@storeusercourse');
    
     Route::get('/admin', 'HomeController@index');
+
     Route::get('/showcourseaproved', 'CourseController@showcourseaproved');
  
+Route::group(['middleware' => 'Admin'], function () {
 Route::get('/category', 'HomeController@showCategory');
+});
 Route::get('/deletecategory/{id_category}', 'CategoryController@destroyCategory');
 
 Route::get('/deletecourse/{id_course}', 'CourseController@destroyCourse');

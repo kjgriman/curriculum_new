@@ -1,4 +1,5 @@
 <!-- Main Header -->
+
 <header class="main-header">
 
     <!-- Logo -->
@@ -42,6 +43,20 @@
                                    Bienvenido  <b>{{ Auth::user()->name }}</b> 
                                     <small>{{Date('Y-M-d ')}}</small>
                                 </p>
+
+                            </li><b>Medallas obtenidas</b>
+                            <li>
+                                <?php if(isset($getCourses)){ ?>
+                                 @foreach($getCourses as $key => $getCourse)
+                                
+                                <img data-togle="tooltip"  title="{{$getCourse->name_courses}}" width="30px" height="auto" src="img/imgmedalla/{{$getCourse->imgmedalla }}">
+                                @endforeach
+<?php
+}
+else{
+    echo 'sin medallas';
+}
+?>
                             </li>
                             <!-- Menu Body -->
                             

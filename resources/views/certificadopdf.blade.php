@@ -5,9 +5,17 @@ $fecha=date('Y-M-d',$epoch);?>
 	<!DOCTYPE html>
 <html>
 <head>
-	<title>La Web Del Hamster</title>
+	<title>Certificado</title>
 	<style type="text/css">
+		body{
+			font-size: 24px;
+			background: #f2f2f2;
+			font-style: italic;
+
+/*background-image: url('img/certdigi.jpg');*/
+		}
 		
+
 		
  
 	</style>
@@ -16,26 +24,37 @@ $fecha=date('Y-M-d',$epoch);?>
 	<nav> 
 		
 	
-<table align="center" border="1">
+<table align="center" border="0">
 		
 		<tbody>
-			<tr ><td colspan="2">
-		<img src="img/certdigi.jpg"></td></tr>
+
+			<tr ><td colspan="2" align="center">
+		<img src="img/diploma.png"></td></tr>
+
 		
 			<tr>
-				<td colspan="2" align="center">:Se le otorga el presente certificado a</td>
+
+				<td colspan="2" align="center"><br><br><br>:Se le otorga el presente certificado a</td>
 			</tr>
 			<tr>
-				<td align="center">{{Auth::user()->cedula}}</td><td align="center">{{Auth::user()->name}} {{Auth::user()->apellido}}</td>
+				<td colspan="2" align="center"><strong><h2>{{Auth::user()->name}} {{Auth::user()->apellido}}</h2></strong></td>
 			</tr>
+			<tr><td colspan="2" align="center"><b>{{Auth::user()->cedula}}</b></td></tr>
 			<tr>
-				<td  align="center" colspan="2">por haber aprovado el curso <b>{{strtoupper($data['getUserCourses'][0]->name_courses)}}</b></td>
+				<td  align="center" colspan="2"><br><br>:Por haber aprobado el curso</td>
 			</tr>
+			<tr><td align="center" colspan="2">
+				 <b>{{strtoupper($data['getUserCourses'][0]->name_courses)}}</b>
+			</td></tr>
 			<tr><td colspan="2" align="center">{{$data['getUserCourses'][0]->description_courses}}</td></tr>
-			<tr><td colspan="2" align="center">Aprovado el</td></tr>
+			<tr><td colspan="2" align="center"><br><br>Asignado con fecha</td></tr>
 			<tr><td colspan="2" align="center">{{$fecha}}</td></tr>
+			
 		</tbody>
 	</table>
 	</nav>
+	<footer style="font-size: 14px;"><br><br><br>
+				<br><br> Bajo el codigo de certificado # <b>{{$data['getUserCourses'][0]->id_usercourse}}</b>
+			</footer>
 </body>
 </html>

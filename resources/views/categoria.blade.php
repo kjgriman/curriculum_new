@@ -21,12 +21,12 @@
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 				<div class="panel panel-default">
-					<div class="panel-heading"><h2>Gestion de categorias</h2></div>
+					<div class="panel-heading"><h3>Gestion de categorias</h3></div>
 
 					<div class="panel-body " >
-						<a data-toggle="modal" data-target="#myModal"><div class="btn btn-success col-md-4 col-md-offset-1"><i class="fa fa-save fa-3x" aria-hidden="true"></i><h3>Crear Categorias</h3><small>Create New Category</small></div>
+						<a data-toggle="modal" data-target="#myModal"><div class="btn btn-success col-md-4 col-md-offset-1"><i class="fa fa-save fa-3x" aria-hidden="true"></i><h4>Crear Categorias</h4><small>Create New Category</small></div>
 						</a>
-						<a data-toggle="modal" data-target="#myModal2"><div class="btn btn-primary col-md-4 col-md-offset-2"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h3> Visualizar Categorias</h3><small>View Category</small></div>
+						<a data-toggle="modal" data-target="#myModal2"><div class="btn btn-primary col-md-4 col-md-offset-2"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h4> Visualizar Categorias</h4><small>View Category</small></div>
 						</a>
 
 					</div>
@@ -39,12 +39,12 @@
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 				<div class="panel panel-default">
-					<div class="panel-heading"><h2>Gestion de cursos</h2></div>
+					<div class="panel-heading"><h3>Gestion de cursos</h3></div>
 
 					<div class="panel-body " >
-						<a data-toggle="modal" data-target="#myModal3"><div class="btn btn-success col-md-4 col-md-offset-1"><i class="fa fa-book fa-3x" aria-hidden="true"></i><h3>Crear Cursos</h3><small>Create New Course</small></div>
+						<a data-toggle="modal" data-target="#myModal3"><div class="btn btn-success col-md-4 col-md-offset-1"><i class="fa fa-book fa-3x" aria-hidden="true"></i><h4>Crear Cursos</h4><small>Create New Course</small></div>
 						</a>
-						<a data-toggle="modal" data-target="#myModal4"><div class="btn btn-primary col-md-4 col-md-offset-2"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h3> Visualizar Cursos</h3><small>View Course</small></div>
+						<a data-toggle="modal" data-target="#myModal4"><div class="btn btn-primary col-md-4 col-md-offset-2"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h4> Visualizar Cursos</h4><small>View Course</small></div>
 						</a>
 
 					</div>
@@ -57,11 +57,11 @@
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 				<div class="panel panel-default">
-					<div class="panel-heading"><h2>Gestion de Usuarios</h2></div>
+					<div class="panel-heading"><h3>Gestion de Usuarios</h3></div>
 
 					<div class="panel-body " >
 						
-						<a data-toggle="modal" data-target="#myModal5"><div class="btn btn-primary col-md-4 col-md-offset-4"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h3> Visualizar Usuarios</h3><small>View Usuarios</small></div>
+						<a data-toggle="modal" data-target="#myModal5"><div class="btn btn-primary col-md-4 col-md-offset-4"><i class="fa fa-list fa-3x" aria-hidden="true"></i><h4> Visualizar Usuarios</h4><small>View Usuarios</small></div>
 						</a>
 
 					</div>

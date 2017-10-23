@@ -144,6 +144,7 @@ try {
 
         $pdf = new PDF();
         $pdf->loadView('certificadopdf',['data'=>$data]);
+
         $pdf->stream('certificadopdf');   
 
     }
