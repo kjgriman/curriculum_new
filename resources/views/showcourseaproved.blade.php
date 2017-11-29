@@ -4,7 +4,6 @@
     Home
 @endsection
 
-
 @section('main-content')
 
 
